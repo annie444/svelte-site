@@ -1,0 +1,28 @@
+@font-face {
+    font-family: 'MuseoModerno';
+    src: url('fonts/MuseoModerno/hinted-MuseoModerno-Thin.eot');
+    src: local('MuseoModerno Thin'), local('MuseoModerno-Thin'),
+        url('fonts/MuseoModerno/hinted-MuseoModerno-Thin.eot?#iefix') format('embedded-opentype'),
+        url('fonts/MuseoModerno/hinted-MuseoModerno-Thin.woff2') format('woff2'),
+        url('fonts/MuseoModerno/hinted-MuseoModerno-Thin.woff') format('woff'),
+        url('fonts/MuseoModerno/hinted-MuseoModerno-Thin.ttf') format('truetype'),
+        url('fonts/MuseoModerno/hinted-MuseoModerno-Thin.svg#MuseoModerno-Thin') format('svg');
+    font-weight: 100;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'MuseoModerno';
+    src: url('fonts/MuseoModerno/hinted-MuseoModerno-ThinItalic.eot');
+    src: local('MuseoModerno Thin Italic'), local('MuseoModerno-ThinItalic'),
+        url('fonts/MuseoModerno/hinted-MuseoModerno-ThinItalic.eot?#iefix') format('embedded-opentype'),
+        url('fonts/MuseoModerno/hinted-MuseoModerno-ThinItalic.woff2') format('woff2'),
+        url('fonts/MuseoModerno/hinted-MuseoModerno-ThinItalic.woff') format('woff'),
+        url('fonts/MuseoModerno/hinted-MuseoModerno-ThinItalic.ttf') format('truetype'),
+        url('fonts/MuseoModerno/hinted-MuseoModerno-ThinItalic.svg#MuseoModerno-ThinItalic') format('svg');
+    font-weight: 100;
+    font-style: italic;
+    font-display: swap;
+}
+

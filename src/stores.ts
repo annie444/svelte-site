@@ -19,4 +19,3 @@ clientWidth.subscribe((value: number) => {
     size.set((((value / 2) - 75) < 0) ? 0 : ((value / 2) - 75));
 });
 export const disabled: Writable<boolean> = writable(false);
-export const scroll: Writable<number> = writable(0);

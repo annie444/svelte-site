@@ -2,11 +2,8 @@
   import '../../app.postcss';
   import { onMount } from "svelte";
   import { waitForElem } from "$lib";
-  import { AppShell, AppBar } from "@skeletonlabs/skeleton"
   import { blur } from "svelte/transition";
   import { cubicIn } from "svelte/easing";
-  import { disabled, scroll } from "$stores"
-  import Icon from "@iconify/svelte";
 
   let mounted = false;
   onMount(async () => {
@@ -16,9 +13,9 @@
     } else {
       const body = e as HTMLBodyElement;
       const attr = body.getAttribute("data-theme");
-      if(!attr || attr !== "warm") {
+      if(!attr || attr !== "mono") {
         console.log(attr);
-        body.setAttribute("data-theme", "warm");
+        body.setAttribute("data-theme", "mono");
       }
     }
     mounted = true;
@@ -26,14 +23,8 @@
 </script>
 
 {#if mounted}
-  <AppShell transitionIn={blur} on:scroll={(e) => { $scroll = e.currentTarget.scrollTop }} transitionInParams={{ duration: 500, easing: cubicIn, opacity: 0.5 }}>
-    <svelte:fragment slot="header">
-      <AppBar>Skeleton</AppBar>
-      <button class="btn btn-icon variant-filled" type="button" on:click={() => $disabled = !$disabled}>
-        <Icon icon="solar:accessibility-bold" color="fill-token" width="43px" />
-      </button>
-    </svelte:fragment>
-    <slot /> 
-  </AppShell>
+  <div in:blur={{ duration: 500, easing: cubicIn, opacity: 0.5 }}>
+    <slot />
+  </div>
 {/if}
 

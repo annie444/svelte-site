@@ -44,7 +44,7 @@
   });
   left.subscribe((value: number) => {
     if (header && header !== null && !$navigating)  {
-      textLeft = (value + ($size / 2)) - (header.getBoundingClientRect().width / 2)
+      textLeft = (value + ($size / 2)) - (header.getBoundingClientRect().width / 2);
       $textMoveLeft = textLeft;
     } 
   });

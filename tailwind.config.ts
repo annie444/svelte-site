@@ -3,7 +3,7 @@ import type { Config } from 'tailwindcss'
 import forms from '@tailwindcss/forms';
 import typography from '@tailwindcss/typography';
 import { skeleton } from '@skeletonlabs/tw-plugin'
-import { rainbow, warm } from './src/lib/themes'
+import { rainbow, warm, mono } from './src/lib/themes'
 
 export default {
 	darkMode: 'class',
@@ -24,7 +24,8 @@ export default {
 			themes: {
         custom: [
           rainbow,
-          warm
+          warm,
+          mono
         ],
 			},
 		}),
