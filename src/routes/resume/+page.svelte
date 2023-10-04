@@ -682,10 +682,6 @@
 		object-fit: cover;
 	}
 
-	.bridge {
-		font-size: 18rem;
-	}
-
 	@media (min-width: 768px) {
 		.third-header {
 			writing-mode: vertical-rl;
