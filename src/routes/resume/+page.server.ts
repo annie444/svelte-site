@@ -2,6 +2,14 @@ import type { Action, Actions } from "./$types";
 import { SMTPClient, Message } from 'emailjs';
 import { fail } from "@sveltejs/kit";
 import { env } from '$env/dynamic/private';
+import type { Config } from '@sveltejs/adapter-vercel';
+
+export const config: Config = {
+  isr: {
+    expiration: 60,
+    bypassToken: env.ISR_TOKEN,
+  },
+};
 
 const send: Action = async ({ request }) => {
 
