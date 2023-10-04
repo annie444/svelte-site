@@ -42,8 +42,9 @@
   "type": "module",
   "dependencies": {
     "@floating-ui/dom": "1.5.3",
+    "@sveltejs/kit": "^1.20",
     "animejs": "^3.2",
     "emailjs": "^4.0.3",
-    "@sveltejs/kit": "^1.20"
+    "vercel": "^32.4.1"
   }
 }

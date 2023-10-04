@@ -1,6 +1,6 @@
 import adapter from '@sveltejs/adapter-vercel';
 import { vitePreprocess } from '@sveltejs/kit/vite';
-
+import { env } from "$env/dynamic/private";
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
@@ -13,7 +13,14 @@ const config = {
     inspector: true,
   },
   kit: {
-    adapter: adapter(),
+    adapter: adapter({
+      runtime: 'nodejs18.x',
+      split: true,
+      isr: {
+        expiration: 60,
+        bypassToken: env.ISR_TOKEN,
+      },
+    }),
     alias: {
       $lib: './src/lib',
       $components: './src/components',
