@@ -24,7 +24,6 @@
     "@typescript-eslint/eslint-plugin": "^6.0",
     "@typescript-eslint/parser": "^6.0",
     "@vercel/analytics": "^1.0.2",
-    "@vercel/blob": "^0.13.0",
     "autoprefixer": "^10.4",
     "eslint": "^8.28",
     "eslint-config-prettier": "^9.0",
@@ -46,7 +45,6 @@
     "@floating-ui/dom": "1.5.3",
     "@sveltejs/kit": "^1.20",
     "animejs": "^3.2",
-    "emailjs": "^4.0.3",
-    "vercel": "^32.4.1"
+    "emailjs": "^4.0.3"
   }
 }
