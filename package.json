@@ -2,6 +2,7 @@
   "name": "skeleton-site",
   "version": "0.0.1",
   "private": true,
+  "license": "UNLICENSED",
   "scripts": {
     "dev": "vite dev",
     "build": "vite build",
@@ -23,6 +24,7 @@
     "@typescript-eslint/eslint-plugin": "^6.0",
     "@typescript-eslint/parser": "^6.0",
     "@vercel/analytics": "^1.0.2",
+    "@vercel/blob": "^0.13.0",
     "autoprefixer": "^10.4",
     "eslint": "^8.28",
     "eslint-config-prettier": "^9.0",
