@@ -1,5 +1,4 @@
 <script lang="ts">
-	import { goto } from '$app/navigation';
 	import NameAnimation from '$components/NameAnimation.svelte';
 	import TopLeftBubble from '$components/TopLeftBubble.svelte';
 	import TopRightBubble from '$components/TopRightBubble.svelte';
@@ -21,7 +20,7 @@
 			loop: false
 		});
 		setTimeout(() => {
-			return goto(e.detail.location);
+			window.location = e.detail.location;
 		}, 3000);
 	};
 </script>
