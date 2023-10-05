@@ -1,17 +1,16 @@
 <script lang="ts">
 	import { Parallax, ParallaxLayer, StickyLayer } from 'svelte-parallax';
 	import { disabled } from '$stores';
-	import { writable } from 'svelte/store';
 	import { onMount } from 'svelte';
 	import Icon from '@iconify/svelte';
 	import { enhance } from '$app/forms';
+	import { sectionHeight } from '$stores';
 
 	let parallax: Parallax;
 	let innerWidth: number;
 	let innerHeight: number;
 	let xxlScreen = false;
 	let section = 0;
-	const sectionHeight = writable(1080);
 
 	type E = MouseEvent & { currentTarget: EventTarget & HTMLButtonElement };
 	const increaseSection = (n: number | E | undefined) => {
@@ -45,14 +44,12 @@
 	}
 
 	onMount(() => {
-		setDims();
+		setTimeout(setDims, 0);
 	});
 
 	const setDims = () => {
 		sectionHeight.set(1866240 / innerWidth);
 	};
-
-	$: console.log(section);
 
 	let stickyLayer1 = '';
 	let topButton = 'opacity-75';
@@ -913,10 +910,10 @@
 			} else if (p <= 0.9 && p >= 0.1) {
 				stickyLayer4 = 'opacity-100';
 			}
-			if (p < 0.5) {
+			if (p < 0.8) {
 				bottomButton = 'opacity-100 pointer-events-auto cursor-pointer';
 			} else {
-				bottomButton = 'opacity-75';
+				bottomButton = 'opacity-50';
 			}
 		}}
 	>

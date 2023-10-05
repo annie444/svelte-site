@@ -3,7 +3,7 @@
 	import { onMount } from 'svelte';
 	import { waitForElem } from '$lib';
 	import { blur } from 'svelte/transition';
-	import { cubicIn } from 'svelte/easing';
+	import { cubicIn, cubicOut } from 'svelte/easing';
 	import { dev } from '$app/environment';
 	import { inject } from '@vercel/analytics';
 	import { browser } from '$app/environment';
@@ -41,7 +41,10 @@
 </script>
 
 {#if mounted}
-	<div in:blur={{ duration: 500, easing: cubicIn, opacity: 0.5 }}>
+	<div
+		in:blur={{ duration: 500, easing: cubicIn, opacity: 0.5 }}
+		out:blur={{ duration: 500, easing: cubicOut, opacity: 0.5 }}
+	>
 		<slot />
 	</div>
 {/if}

@@ -16,6 +16,7 @@ export const size: Writable<number> = tweened(0, {
   duration: 500
 });
 clientWidth.subscribe((value: number) => {
-    size.set((((value / 2) - 75) < 0) ? 0 : ((value / 2) - 75));
+  size.set((((value / 2) - 75) < 0) ? 0 : ((value / 2) - 75));
 });
 export const disabled: Writable<boolean> = writable(false);
+export const sectionHeight: Writable<number> = writable(1080);

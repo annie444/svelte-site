@@ -1,7 +1,7 @@
 import type * as Kit from '@sveltejs/kit';
 
 type Expand<T> = T extends infer O ? { [K in keyof O]: O[K] } : never;
-type RouteParams = {}
+type RouteParams = {  }
 type RouteId = '/resume';
 type MaybeWithVoid<T> = {} extends T ? T | void : T;
 export type RequiredKeys<T> = { [K in keyof T]-?: {} extends { [P in K]: T[K] } ? never : K; }[keyof T];
@@ -12,7 +12,7 @@ export type Snapshot<T = any> = Kit.Snapshot<T>;
 type PageServerParentData = Omit<EnsureDefined<import('../$types.js').LayoutServerData>, keyof LayoutServerData> & EnsureDefined<LayoutServerData>;
 type PageParentData = Omit<EnsureDefined<import('../$types.js').LayoutData>, keyof LayoutData> & EnsureDefined<LayoutData>;
 type LayoutRouteId = RouteId | "/resume"
-type LayoutParams = RouteParams & {}
+type LayoutParams = RouteParams & {  }
 type LayoutServerParentData = EnsureDefined<import('../$types.js').LayoutServerData>;
 type LayoutParentData = EnsureDefined<import('../$types.js').LayoutData>;
 
@@ -20,7 +20,7 @@ export type PageServerLoad<OutputData extends OutputDataShape<PageServerParentDa
 export type PageServerLoadEvent = Parameters<PageServerLoad>[0];
 type ExcludeActionFailure<T> = T extends Kit.ActionFailure<any> ? never : T extends void ? never : T;
 type ActionsSuccess<T extends Record<string, (...args: any) => any>> = { [Key in keyof T]: ExcludeActionFailure<Awaited<ReturnType<T[Key]>>>; }[keyof T];
-type ExtractActionFailure<T> = T extends Kit.ActionFailure<infer X> ? X extends void ? never : X : never;
+type ExtractActionFailure<T> = T extends Kit.ActionFailure<infer X>	? X extends void ? never : X : never;
 type ActionsFailure<T extends Record<string, (...args: any) => any>> = { [Key in keyof T]: Exclude<ExtractActionFailure<Awaited<ReturnType<T[Key]>>>, void>; }[keyof T];
 type ActionsExport = typeof import('./proxy+page.server.js').actions
 export type SubmitFunction = Kit.SubmitFunction<Expand<ActionsSuccess<ActionsExport>>, Expand<ActionsFailure<ActionsExport>>>

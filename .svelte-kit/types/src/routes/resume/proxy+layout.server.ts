@@ -7,4 +7,4 @@ export const load = () => {
     analyticsId: env.VERCEL_ANALYTICS_ID
   };
 }
-  ; null as any as LayoutServerLoad;
+;null as any as LayoutServerLoad;
