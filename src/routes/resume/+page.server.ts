@@ -3,6 +3,7 @@ import { SMTPClient, Message } from 'emailjs';
 import { fail } from "@sveltejs/kit";
 import { env } from '$env/dynamic/private';
 
+export const csr = true;
 
 const send: Action = async ({ request }) => {
 

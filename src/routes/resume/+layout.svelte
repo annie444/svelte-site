@@ -6,20 +6,6 @@
 	import { cubicIn, cubicOut } from 'svelte/easing';
 	import { dev } from '$app/environment';
 	import { inject } from '@vercel/analytics';
-	import { browser } from '$app/environment';
-	import { page } from '$app/stores';
-	import { webVitals } from '$lib/vitals';
-	import type { LayoutServerData } from './$types';
-
-	export let data: LayoutServerData;
-
-	$: if (browser && data?.analyticsId) {
-		webVitals({
-			path: $page.url.pathname,
-			params: $page.params,
-			analyticsId: data.analyticsId
-		});
-	}
 
 	inject({ mode: dev ? 'development' : 'production' });
 
@@ -40,11 +26,9 @@
 	});
 </script>
 
-{#if mounted}
-	<div
-		in:blur={{ duration: 500, easing: cubicIn, opacity: 0.5 }}
-		out:blur={{ duration: 500, easing: cubicOut, opacity: 0.5 }}
-	>
-		<slot />
-	</div>
-{/if}
+<div
+	in:blur={{ duration: 500, easing: cubicIn, opacity: 0.5 }}
+	out:blur={{ duration: 500, easing: cubicOut, opacity: 0.5 }}
+>
+	<slot />
+</div>

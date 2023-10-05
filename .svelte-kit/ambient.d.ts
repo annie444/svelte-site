@@ -32,6 +32,7 @@ declare module '$env/static/private' {
 	export const npm_package_devDependencies_prettier: string;
 	export const MANPATH: string;
 	export const NIX_PROFILES: string;
+	export const npm_package_dependencies_svelte_parallax: string;
 	export const base16_fish_shell_background: string;
 	export const ABBR_TIPS_PROMPT: string;
 	export const npm_package_devDependencies_eslint_plugin_svelte: string;
@@ -58,10 +59,8 @@ declare module '$env/static/private' {
 	export const __fish_nixos_env_preinit_sourced: string;
 	export const npm_package_devDependencies_svelte_preprocess: string;
 	export const npm_package_private: string;
-	export const PNPM_HOME: string;
 	export const USER: string;
 	export const fish_color_operator: string;
-	export const npm_package_dependencies_web_vitals: string;
 	export const npm_package_license: string;
 	export const npm_package_scripts_check_watch: string;
 	export const COMMAND_MODE: string;
@@ -74,6 +73,7 @@ declare module '$env/static/private' {
 	export const npm_package_devDependencies_eslint: string;
 	export const npm_execpath: string;
 	export const npm_package_devDependencies__typescript_eslint_eslint_plugin: string;
+	export const npm_package_devDependencies_web_vitals: string;
 	export const npm_package_devDependencies_tslib: string;
 	export const npm_package_devDependencies_svelte: string;
 	export const PAGER: string;
@@ -90,7 +90,6 @@ declare module '$env/static/private' {
 	export const fish_color_user: string;
 	export const __CFBundleIdentifier: string;
 	export const npm_package_devDependencies__skeletonlabs_tw_plugin: string;
-	export const npm_package_devDependencies_svelte_parallax: string;
 	export const NIX_PATH: string;
 	export const PWD: string;
 	export const npm_package_devDependencies_tailwindcss: string;
@@ -202,6 +201,7 @@ declare module '$env/dynamic/private' {
 		npm_package_devDependencies_prettier: string;
 		MANPATH: string;
 		NIX_PROFILES: string;
+		npm_package_dependencies_svelte_parallax: string;
 		base16_fish_shell_background: string;
 		ABBR_TIPS_PROMPT: string;
 		npm_package_devDependencies_eslint_plugin_svelte: string;
@@ -228,10 +228,8 @@ declare module '$env/dynamic/private' {
 		__fish_nixos_env_preinit_sourced: string;
 		npm_package_devDependencies_svelte_preprocess: string;
 		npm_package_private: string;
-		PNPM_HOME: string;
 		USER: string;
 		fish_color_operator: string;
-		npm_package_dependencies_web_vitals: string;
 		npm_package_license: string;
 		npm_package_scripts_check_watch: string;
 		COMMAND_MODE: string;
@@ -244,6 +242,7 @@ declare module '$env/dynamic/private' {
 		npm_package_devDependencies_eslint: string;
 		npm_execpath: string;
 		npm_package_devDependencies__typescript_eslint_eslint_plugin: string;
+		npm_package_devDependencies_web_vitals: string;
 		npm_package_devDependencies_tslib: string;
 		npm_package_devDependencies_svelte: string;
 		PAGER: string;
@@ -260,7 +259,6 @@ declare module '$env/dynamic/private' {
 		fish_color_user: string;
 		__CFBundleIdentifier: string;
 		npm_package_devDependencies__skeletonlabs_tw_plugin: string;
-		npm_package_devDependencies_svelte_parallax: string;
 		NIX_PATH: string;
 		PWD: string;
 		npm_package_devDependencies_tailwindcss: string;

@@ -21,9 +21,7 @@
 			loop: false
 		});
 		setTimeout(() => {
-			return goto(e.detail.location, {
-				invalidateAll: true
-			});
+			return goto(e.detail.location);
 		}, 3000);
 	};
 </script>

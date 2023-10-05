@@ -1,12 +1,7 @@
 {
-	"/(default)": [
-		"src/routes/(default)/+layout.server.ts",
-		"src/routes/(default)/+layout.server.ts"
-	],
+	"/(default)": [],
 	"/": [],
 	"/resume": [
-		"src/routes/resume/+page.server.ts",
-		"src/routes/resume/+layout.server.ts",
-		"src/routes/resume/+layout.server.ts"
+		"src/routes/resume/+page.server.ts"
 	]
 }
