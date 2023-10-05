@@ -11,21 +11,13 @@
 			"handle": "filesystem"
 		},
 		{
-			"src": "^/?(?:/__data.json)?$",
-			"dest": "/fn-0"
-		},
-		{
-			"src": "^/resume/?$",
-			"dest": "/resume?__pathname=/resume"
-		},
-		{
-			"src": "^/resume/?/__data.json$",
-			"dest": "/resume/__data.json?__pathname=/resume"
-		},
-		{
 			"src": "/.*",
 			"dest": "/fn"
 		}
 	],
-	"overrides": {}
+	"overrides": {
+		"index.html": {
+			"path": ""
+		}
+	}
 }
