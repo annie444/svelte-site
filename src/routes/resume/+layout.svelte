@@ -26,9 +26,11 @@
 	});
 </script>
 
-<div
-	in:blur={{ duration: 500, easing: cubicIn, opacity: 0.5 }}
-	out:blur={{ duration: 500, easing: cubicOut, opacity: 0.5 }}
->
-	<slot />
-</div>
+{#if mounted}
+	<div
+		in:blur={{ duration: 500, easing: cubicIn, opacity: 0.5 }}
+		out:blur={{ duration: 500, easing: cubicOut, opacity: 0.5 }}
+	>
+		<slot />
+	</div>
+{/if}

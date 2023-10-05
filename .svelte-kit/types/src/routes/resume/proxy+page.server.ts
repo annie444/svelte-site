@@ -5,7 +5,6 @@ import { fail } from "@sveltejs/kit";
 import { env } from '$env/dynamic/private';
 
 export const csr = true;
-export const ssr = false;
 
 const send: Action = async ({ request }) => {
 
