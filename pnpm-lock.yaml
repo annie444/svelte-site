@@ -11,9 +11,6 @@ dependencies:
   animejs:
     specifier: ^3.2.1
     version: 3.2.1
-  web-vitals:
-    specifier: ^3.5.0
-    version: 3.5.0
 
 devDependencies:
   '@iconify/svelte':
@@ -112,6 +109,9 @@ devDependencies:
   vitest:
     specifier: ^0.34.6
     version: 0.34.6
+  web-vitals:
+    specifier: ^3.5.0
+    version: 3.5.0
 
 packages:
 
@@ -2984,7 +2984,7 @@ packages:
 
   /web-vitals@3.5.0:
     resolution: {integrity: sha512-f5YnCHVG9Y6uLCePD4tY8bO/Ge15NPEQWtvm3tPzDKygloiqtb4SVqRHBcrIAqo2ztqX5XueqDn97zHF0LdT6w==}
-    dev: false
+    dev: true
 
   /webidl-conversions@3.0.1:
     resolution: {integrity: sha512-2JAn3z8AR6rjK8Sm8orRC0h/bcl/DqL7tRPdGZ4I1CjdF+EaMLmYxBHyXuKL849eucPFhvBoxMsflfOb8kxaeQ==}
