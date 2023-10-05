@@ -43,8 +43,9 @@
   "type": "module",
   "dependencies": {
     "@floating-ui/dom": "1.5.3",
-    "animejs": "^3.2.1",
     "@sveltejs/adapter-vercel": "^3.0.3",
     "@sveltejs/kit": "^1.25.1",
+    "animejs": "^3.2.1",
+    "svelte-preprocess": "^5.0.4"
   }
 }
