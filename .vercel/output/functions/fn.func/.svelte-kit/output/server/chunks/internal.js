@@ -1,4 +1,4 @@
-import { c as create_ssr_component, s as setContext, v as validate_component, m as missing_component } from "./ssr.js";
+import { c as create_ssr_component, s as setContext, v as validate_component, m as missing_component } from "./index3.js";
 import "./shared-server.js";
 let base = "";
 let assets = base;
@@ -45,14 +45,15 @@ const Root = create_ssr_component(($$result, $$props, $$bindings, slots) => {
     $$bindings.data_2(data_2);
   let $$settled;
   let $$rendered;
-  let previous_head = $$result.head;
   do {
     $$settled = true;
-    $$result.head = previous_head;
     {
       stores.page.set(page);
     }
-    $$rendered = `  ${constructors[1] ? `${validate_component(constructors[0] || missing_component, "svelte:component").$$render(
+    $$rendered = `
+
+
+${constructors[1] ? `${validate_component(constructors[0] || missing_component, "svelte:component").$$render(
       $$result,
       { data: data_0, this: components[0] },
       {
@@ -110,7 +111,9 @@ const Root = create_ssr_component(($$result, $$props, $$bindings, slots) => {
         }
       },
       {}
-    )}`} ${``}`;
+    )}`}
+
+${``}`;
   } while (!$$settled);
   return $$rendered;
 });
@@ -128,7 +131,7 @@ const options = {
   root: Root,
   service_worker: false,
   templates: {
-    app: ({ head, body, assets: assets2, nonce, env }) => '<!DOCTYPE html>\n<html lang="en" class="dark">\n\n<head>\n  <meta charset="utf-8" />\n  <link rel="icon" href="' + assets2 + '/favicon.png" />\n  <meta name="viewport" content="width=device-width" />\n  ' + head + '\n</head>\n\n<body data-sveltekit-preload-data="hover" id="root" data-theme="rainbow warm mono">\n  <div style="display: contents;">' + body + "</div>\n</body>\n\n</html>\n",
+    app: ({ head, body, assets: assets2, nonce, env }) => '<!DOCTYPE html>\n<html lang="en" class="dark">\n\n<head>\n  <meta charset="utf-8" />\n  <link rel="icon" href="' + assets2 + '/favicon.png" />\n  <meta name="viewport" content="width=device-width" />\n  <link rel="stylesheet" href="' + assets2 + '/stylesheet.css" />\n  ' + head + '\n</head>\n\n<body data-sveltekit-preload-data="hover" id="root" data-theme="rainbow warm mono">\n  <div style="display: contents;">' + body + "</div>\n</body>\n\n</html>\n",
     error: ({ status, message }) => '<!DOCTYPE html>\n<html lang="en">\n	<head>\n		<meta charset="utf-8" />\n		<title>' + message + `</title>
 
 		<style>
@@ -190,7 +193,7 @@ const options = {
 		<div class="error">
 			<span class="status">` + status + '</span>\n			<div class="message">\n				<h1>' + message + "</h1>\n			</div>\n		</div>\n	</body>\n</html>\n"
   },
-  version_hash: "1jnuchd"
+  version_hash: "gbbhll"
 };
 function get_hooks() {
   return {};

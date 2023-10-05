@@ -12,10 +12,7 @@ const config = {
     inspector: true,
   },
   kit: {
-    adapter: adapter({
-      runtime: 'nodejs18.x',
-      split: true,
-    }),
+    adapter: adapter(),
     alias: {
       $lib: './src/lib',
       $components: './src/components',

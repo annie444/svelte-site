@@ -1,15 +1,83 @@
 <script lang="ts">
-	import { Parallax, ParallaxLayer } from 'svelte-parallax';
+	import { Parallax, ParallaxLayer, StickyLayer } from 'svelte-parallax';
 	import { disabled } from '$stores';
+	import { writable } from 'svelte/store';
+	import { onMount } from 'svelte';
 	import Icon from '@iconify/svelte';
 	import { enhance } from '$app/forms';
 
 	let parallax: Parallax;
+	let innerWidth: number;
+	let innerHeight: number;
+	let xxlScreen = false;
+	let section = 0;
+	const sectionHeight = writable(1080);
+
+	type E = MouseEvent & { currentTarget: EventTarget & HTMLButtonElement };
+	const increaseSection = (n: number | E | undefined) => {
+		const inc = n && typeof n === 'number' ? n : 1;
+		parallax.scrollTo(section + inc + 1);
+		section = section + inc;
+	};
+
+	const decreaseSection = (n: number | E | undefined) => {
+		const inc = n && typeof n === 'number' ? n : 1;
+		parallax.scrollTo(section - inc + 1);
+		section = section - inc;
+	};
+
+	const goToTop = () => {
+		parallax.scrollTo(1);
+		section = 0;
+	};
+
+	const goToBottom = () => {
+		parallax.scrollTo(5);
+		section = 4;
+	};
+
+	$: {
+		if (innerWidth && innerWidth < 1060) {
+			xxlScreen = false;
+		} else if (innerWidth) {
+			xxlScreen = true;
+		}
+	}
+
+	onMount(() => {
+		setDims();
+	});
+
+	const setDims = () => {
+		sectionHeight.set(1866240 / innerWidth);
+	};
+
+	$: console.log(section);
+
+	let stickyLayer1 = '';
+	let topButton = 'opacity-75';
+	let stickyLayer2 = 'opacity-0';
+	let stickyLayer3 = 'opacity-0';
+	let stickyLayer4 = 'opacity-0';
+	let bottomButton = 'opacity-100 pointer-events-auto cursor-pointer';
 </script>
 
-<Parallax sections={4} disabled={$disabled} bind:this={parallax}>
-	<ParallaxLayer offset={0.5} rate={0.1} span={1} class="flex flex-row justify-center items-center">
-		<div class="flex flex-row justify-center items-center max-w-[75%]">
+<svelte:window
+	bind:innerWidth
+	bind:innerHeight
+	on:resize={() => {
+		setDims();
+	}}
+/>
+
+<Parallax sections={5} disabled={$disabled} bind:this={parallax} sectionHeight={$sectionHeight}>
+	<ParallaxLayer
+		offset={1}
+		rate={0.1}
+		span={0.5}
+		class="flex flex-row w-full h-full justify-center items-center"
+	>
+		<div class="flex flex-row justify-center items-center h-full max-w-[75%]">
 			<Icon icon="ic:baseline-less-than" width={300} height={500} color="white" />
 			<p class="max-w-[75%] text-lg">
 				Welcome to my personal website! You can call me Annie! I'm a passionate machine learning
@@ -36,7 +104,12 @@
 		</div>
 	</ParallaxLayer>
 
-	<ParallaxLayer offset={1.5} rate={0.1} span={1} class="flex flex-col justify-center items-center">
+	<ParallaxLayer
+		offset={2.25}
+		rate={0.1}
+		span={0.75}
+		class="flex flex-col w-full h-full justify-center items-center"
+	>
 		<h1 class="h1 text-white">Skills</h1>
 		<div class="flex flex-row gap-2 md:gap-3 lg:gap-4 max-h-[25%]">
 			<div class="flex flex-col m-2">
@@ -112,10 +185,10 @@
 	</ParallaxLayer>
 
 	<ParallaxLayer
-		offset={2.5}
+		offset={4}
 		rate={-0.05}
-		span={1}
-		class="flex flex-col justify-center items-center"
+		span={0.1}
+		class="flex flex-col w-full h-full justify-center items-center"
 	>
 		<h1 class="h1">Let's Get In Touch!</h1>
 	</ParallaxLayer>
@@ -124,7 +197,7 @@
 		offset={0}
 		rate={0.5}
 		span={1}
-		class="bg-black h-full flex justify-center items-center"
+		class="bg-black h-full w-full flex justify-center items-center"
 	>
 		<img
 			src="/headshot.webp"
@@ -133,27 +206,34 @@
 		/>
 	</ParallaxLayer>
 
-	<ParallaxLayer offset={0} rate={2.5} span={1} class="flex justify-center items-center h-full">
+	<ParallaxLayer
+		offset={0}
+		rate={2.5}
+		span={1}
+		class="flex w-full h-full justify-center items-center"
+	>
 		<span class="initial initial-a">A</span>
 		<span class="initial initial-e">E</span>
 	</ParallaxLayer>
 
 	<ParallaxLayer
-		offset={1}
+		offset={1.5}
 		rate={0.5}
-		span={1}
-		class="bg-white flex h-full justify-center items-start pointer-events-none"
+		span={1.25}
+		class="bg-white flex h-full w-full justify-center items-start pointer-events-none"
 	/>
 
 	<ParallaxLayer
-		offset={1}
+		offset={1.75}
 		rate={1.25}
 		span={1}
-		class="flex flex-col justify-center items-center pointer-events-none"
+		class="flex h-full w-full flex-col justify-stretch items-stretch pointer-events-none"
 	>
-		<div class="flex flex-col lg:flex-row w-full justify-start justify-items-start items-center">
+		<div class="flex flex-col lg:flex-row w-full justify-items-start justify-start items-center">
 			<h1 class="h1 lg:m-8 m-4 justify-self-start text-black third-header">Work Experience</h1>
-			<span class="divider-vertical w-2 m-0 p-0 h-20 justify-self-start" />
+			{#if xxlScreen}
+				<span class="divider-vertical w-2 m-0 p-0 h-20 justify-self-start" />
+			{/if}
 
 			<div class="flex flex-col md:grid grid-1 w-full justify-center items-center">
 				<div class="mx-4 my-3">
@@ -273,7 +353,9 @@
 
 		<div class="flex flex-col lg:flex-row w-full justify-items-start justify-start items-center">
 			<h1 class="h1 lg:m-8 m-4 text-black third-header">Education</h1>
-			<span class="divider-vertical w-2 m-0 p-0 h-20 justify-self-start" />
+			{#if xxlScreen}
+				<span class="divider-vertical w-2 m-0 p-0 h-20 justify-self-start" />
+			{/if}
 
 			<div
 				class="flex flex-col md:grid grid-2 max-w-[27%] min-w-[23rem] justify-items-start justify-start items-center"
@@ -292,7 +374,9 @@
 
 		<div class="flex flex-col lg:flex-row w-full justify-items-start justify-start items-center">
 			<h1 class="h1 lg:m-8 m-4 text-black third-header">Projects</h1>
-			<span class="divider-vertical w-2 m-0 p-0 h-20 justify-self-start" />
+			{#if xxlScreen}
+				<span class="divider-vertical w-2 m-0 p-0 h-20 justify-self-start" />
+			{/if}
 
 			<div class="flex flex-row md:grid grid-3 justify-items-start justify-start items-center">
 				<div class="flex flex-col mx-4 my-3 justify-items-start justify-start items-start">
@@ -416,21 +500,23 @@
 	</ParallaxLayer>
 
 	<ParallaxLayer
-		offset={2}
+		offset={3}
 		rate={0.5}
 		span={1}
-		class="bg-black flex h-full justify-center items-start pointer-events-none"
+		class="bg-black flex w-full h-full justify-center items-start pointer-events-none"
 	/>
 
 	<ParallaxLayer
-		offset={2}
+		offset={3}
 		rate={1.25}
 		span={1}
-		class="flex flex-col justify-center items-center pointer-events-none"
+		class="flex flex-col h-full w-full justify-center items-center pointer-events-none"
 	>
 		<div class="flex flex-col lg:flex-row w-full justify-items-start justify-start items-center">
 			<h1 class="h1 lg:m-8 m-4 text-white third-header">Publications</h1>
-			<span class="divider-vertical w-2 m-0 p-0 h-20 justify-self-start" />
+			{#if xxlScreen}
+				<span class="divider-vertical w-2 m-0 p-0 h-20 justify-self-start" />
+			{/if}
 
 			<div class="flex flex-row md:grid grid-4 justify-items-start justify-start items-center">
 				<div class="flex flex-col mx-4 my-3 justify-items-start justify-start items-start">
@@ -483,7 +569,9 @@
 				class="flex flex-col lg:flex-row min-w-[60%] justify-items-start justify-start items-center"
 			>
 				<h1 class="h1 lg:m-8 m-4 text-white third-header">Awards</h1>
-				<span class="divider-vertical w-2 m-0 p-0 h-20 justify-self-start" />
+				{#if xxlScreen}
+					<span class="divider-vertical w-2 m-0 p-0 h-20 justify-self-start" />
+				{/if}
 
 				<div class="flex flex-row md:grid grid-4 justify-items-start justify-start items-center">
 					<div class="flex flex-col mx-4 my-3 justify-items-start justify-start items-start">
@@ -509,7 +597,9 @@
 				class="flex flex-col lg:flex-row min-w-[40%] justify-items-start justify-start items-center"
 			>
 				<h1 class="h1 lg:m-8 m-4 text-white third-header">Certifications</h1>
-				<span class="divider-vertical w-2 m-0 p-0 h-20 justify-self-start" />
+				{#if xxlScreen}
+					<span class="divider-vertical w-2 m-0 p-0 h-20 justify-self-start" />
+				{/if}
 
 				<div class="flex flex-row md:grid grid-5 justify-items-start justify-start items-center">
 					<div class="flex flex-col mx-4 my-3 justify-items-start justify-start items-start">
@@ -529,7 +619,9 @@
 		</div>
 		<div class="flex flex-col lg:flex-row w-full justify-items-start justify-start items-center">
 			<h1 class="h1 lg:m-8 m-4 text-white third-header">Coursework</h1>
-			<span class="divider-vertical w-2 m-0 p-0 h-30 justify-self-start" />
+			{#if xxlScreen}
+				<span class="divider-vertical w-2 m-0 p-0 h-30 justify-self-start" />
+			{/if}
 
 			<div class="flex flex-row md:grid grid-6 justify-items-start justify-start items-center">
 				<div class="flex flex-col mx-4 my-3 justify-items-start justify-start items-start">
@@ -595,7 +687,12 @@
 		</div>
 	</ParallaxLayer>
 
-	<ParallaxLayer offset={3} rate={1.25} span={0.75} class="flex flex-row items-end justify-center">
+	<ParallaxLayer
+		offset={4.1}
+		rate={1.25}
+		span={0.8}
+		class="flex h-full w-full flex-row items-end justify-center"
+	>
 		<form
 			action="?/send"
 			method="POST"
@@ -645,14 +742,211 @@
 	</ParallaxLayer>
 
 	<ParallaxLayer
-		offset={3.75}
+		offset={4.9}
 		rate={0.25}
-		span={0.25}
-		class="flex flex-col items-center justify-end"
+		span={0.1}
+		class="flex flex-col w-full h-full items-center justify-end"
 	>
 		<span class="h3 text-base p-4 text-slate-300">&#169; Analetta Rae Marie Ehler &#8213; 2023</span
 		>
 	</ParallaxLayer>
+
+	<StickyLayer
+		offset={{ top: 0, bottom: 1.25 }}
+		class="flex flex-row transition-all items-start justify-center bg-transparent pointer-events-none {stickyLayer1}"
+		onProgress={(p) => {
+			if (p > 0.9) {
+				stickyLayer1 = 'opacity-0';
+			} else if (p <= 0.9) {
+				stickyLayer1 = 'opacity-100';
+			}
+			if (section === 0 && p > 0.8) {
+				section = 1.5;
+			} else if (section === 1.5 && p < 0.5) {
+				section = 0;
+			}
+			if (p > 0.2) {
+				topButton = 'opacity-100 pointer-events-auto cursor-pointer';
+			} else {
+				topButton = 'opacity-75';
+			}
+		}}
+	>
+		<div class="w-full flex bg-transparent flex-row justify-between items-center">
+			<div class="flex bg-transparent flex-row justify-center items-center">
+				<button type="button" class="button m-1 bg-white p-1 {topButton}" on:click={goToTop}>
+					<Icon icon="ph:caret-double-left" color="black" height={32} />
+				</button>
+				<button type="button" class="button m-1 bg-white p-1 {topButton}" on:click={goToTop}>
+					<Icon icon="ph:caret-left" color="black" height={32} />
+				</button>
+			</div>
+			<div class="flex bg-transparent flex-row justify-center items-center">
+				<button
+					type="button"
+					class="cursor-pointer m-1 button pointer-events-auto bg-white p-1"
+					on:click={() => increaseSection(1.25)}
+				>
+					<Icon icon="ph:caret-right" color="black" height={32} />
+				</button>
+				<button
+					type="button"
+					class="cursor-pointer m-1 button pointer-events-auto bg-white p-1"
+					on:click={goToBottom}
+				>
+					<Icon icon="ph:caret-double-right" color="black" height={32} />
+				</button>
+			</div>
+		</div>
+	</StickyLayer>
+
+	<StickyLayer
+		offset={{ top: 1.25, bottom: 2.75 }}
+		class="flex flex-row transition-all items-start justify-center bg-transparent pointer-events-none {stickyLayer2}"
+		onProgress={(p) => {
+			if (p > 0.9 || p < 0.1) {
+				stickyLayer2 = 'opacity-0';
+			} else if (p <= 0.9 && p >= 0.1) {
+				stickyLayer2 = 'opacity-100';
+			}
+			if (section === 1.5 && p > 0.8) {
+				section = 3;
+			} else if (section === 3 && p < 0.5) {
+				section = 1.5;
+			}
+		}}
+	>
+		<div class="w-full flex bg-transparent flex-row justify-between items-center">
+			<div class="flex bg-transparent flex-row justify-center items-center">
+				<button
+					type="button"
+					class="button pointer-events-auto cursor-pointer m-1 bg-black p-1"
+					on:click={goToTop}
+				>
+					<Icon icon="ph:caret-double-left" color="white" height={32} />
+				</button>
+				<button
+					type="button"
+					class="button pointer-events-auto cursor-pointer m-1 bg-black p-1"
+					on:click={() => decreaseSection(1.5)}
+				>
+					<Icon icon="ph:caret-left" color="white" height={32} />
+				</button>
+			</div>
+			<div class="flex bg-transparent flex-row justify-center items-center">
+				<button
+					type="button"
+					class="cursor-pointer m-1 button pointer-events-auto bg-black p-1"
+					on:click={() => increaseSection(1.5)}
+				>
+					<Icon icon="ph:caret-right" color="white" height={32} />
+				</button>
+				<button
+					type="button"
+					class="cursor-pointer m-1 button pointer-events-auto bg-black p-1"
+					on:click={goToBottom}
+				>
+					<Icon icon="ph:caret-double-right" color="white" height={32} />
+				</button>
+			</div>
+		</div>
+	</StickyLayer>
+
+	<StickyLayer
+		offset={{ top: 2.75, bottom: 3.75 }}
+		class="flex flex-row transition-all items-start justify-center bg-transparent pointer-events-none {stickyLayer3}"
+		onProgress={(p) => {
+			if (p > 0.9 || p < 0.1) {
+				stickyLayer3 = 'opacity-0';
+			} else if (p <= 0.9 && p >= 0.1) {
+				stickyLayer3 = 'opacity-100';
+			}
+			if (section === 3 && p > 0.8) {
+				section = 4;
+			} else if (section === 4 && p < 0.5) {
+				section = 3;
+			}
+		}}
+	>
+		<div class="w-full flex bg-transparent flex-row justify-between items-center">
+			<div class="flex bg-transparent flex-row justify-center items-center">
+				<button
+					type="button"
+					class="button pointer-events-auto cursor-pointer m-1 bg-white p-1"
+					on:click={goToTop}
+				>
+					<Icon icon="ph:caret-double-left" color="black" height={32} />
+				</button>
+				<button
+					type="button"
+					class="button pointer-events-auto cursor-pointer m-1 bg-white p-1"
+					on:click={() => decreaseSection(1.5)}
+				>
+					<Icon icon="ph:caret-left" color="black" height={32} />
+				</button>
+			</div>
+			<div class="flex bg-transparent flex-row justify-center items-center">
+				<button
+					type="button"
+					class="cursor-pointer m-1 button pointer-events-auto bg-white p-1"
+					on:click={() => increaseSection(1)}
+				>
+					<Icon icon="ph:caret-right" color="black" height={32} />
+				</button>
+				<button
+					type="button"
+					class="cursor-pointer m-1 button pointer-events-auto bg-white p-1"
+					on:click={goToBottom}
+				>
+					<Icon icon="ph:caret-double-right" color="black" height={32} />
+				</button>
+			</div>
+		</div>
+	</StickyLayer>
+
+	<StickyLayer
+		offset={{ top: 3.75, bottom: 5 }}
+		class="flex flex-row transition-all items-start justify-center bg-transparent pointer-events-none {stickyLayer4}"
+		onProgress={(p) => {
+			if (p > 0.9 || p < 0.1) {
+				stickyLayer4 = 'opacity-0';
+			} else if (p <= 0.9 && p >= 0.1) {
+				stickyLayer4 = 'opacity-100';
+			}
+			if (p < 0.5) {
+				bottomButton = 'opacity-100 pointer-events-auto cursor-pointer';
+			} else {
+				bottomButton = 'opacity-75';
+			}
+		}}
+	>
+		<div class="w-full flex bg-transparent flex-row justify-between items-center">
+			<div class="flex bg-transparent flex-row justify-center items-center">
+				<button type="button" class="button m-1 bg-white p-1" on:click={goToTop}>
+					<Icon icon="ph:caret-double-left" color="black" height={32} />
+				</button>
+				<button type="button" class="button m-1 bg-white p-1" on:click={() => decreaseSection(1)}>
+					<Icon icon="ph:caret-left" color="black" height={32} />
+				</button>
+			</div>
+			<div class="flex bg-transparent flex-row justify-center items-center">
+				<button
+					type="button"
+					class="cursor-pointer {bottomButton} m-1 button pointer-events-auto bg-white p-1"
+					on:click={goToBottom}
+				>
+					<Icon icon="ph:caret-right" color="black" height={32} />
+				</button>
+				<button
+					type="button"
+					class="cursor-pointer m-1 button pointer-events-auto {bottomButton} bg-white p-1"
+					on:click={goToBottom}
+				>
+					<Icon icon="ph:caret-double-right" color="black" height={32} />
+				</button>
+			</div>
+		</div>
+	</StickyLayer>
 </Parallax>
 
 <style>
@@ -682,12 +976,11 @@
 		object-fit: cover;
 	}
 
+	button.button {
+		border-radius: 100%;
+	}
+
 	@media (min-width: 768px) {
-		.third-header {
-			writing-mode: vertical-rl;
-			text-orientation: sideways-right;
-			transform: rotate(180deg);
-		}
 		.grid-1 {
 			grid-template-columns: 1fr 1px 1fr 1px 1fr;
 		}
@@ -711,15 +1004,15 @@
 		}
 	}
 
-	div,
-	p,
-	h1,
-	h2,
-	h3,
-	header,
-	section,
-	span,
-	footer {
+	@media (min-width: 1060px) {
+		.third-header {
+			writing-mode: vertical-rl;
+			text-orientation: sideways-right;
+			transform: rotate(180deg);
+		}
+	}
+
+	:global(div, p, h1, h2, h3, header, section, span, footer) {
 		pointer-events: none;
 	}
 </style>
