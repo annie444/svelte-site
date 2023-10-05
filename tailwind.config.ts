@@ -6,28 +6,28 @@ import { skeleton } from '@skeletonlabs/tw-plugin'
 import { rainbow, warm, mono } from './src/lib/themes'
 
 export default {
-	darkMode: 'class',
-	content: [
-    './src/**/*.{html,js,svelte,ts}', 
+  darkMode: 'class',
+  content: [
+    './src/**/*.{html,js,svelte,ts}',
     join(
-      require.resolve('@skeletonlabs/skeleton'), 
+      require.resolve('@skeletonlabs/skeleton'),
       '../**/*.{html,js,svelte,ts}'
     )
   ],
-	theme: {
-		extend: {},
-	},
-	plugins: [
-		forms,
-		typography,
-		skeleton({
-			themes: {
+  theme: {
+    extend: {},
+  },
+  plugins: [
+    forms,
+    typography,
+    skeleton({
+      themes: {
         custom: [
           rainbow,
           warm,
           mono
         ],
-			},
-		}),
-	],
+      },
+    }),
+  ],
 } satisfies Config;
