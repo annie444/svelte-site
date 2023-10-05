@@ -8,6 +8,7 @@
 	let innerWidth: number;
 	let innerHeight: number;
 	let xxlScreen: boolean;
+	let xlScreen: boolean;
 	let lgScreen: boolean;
 	let section = 0;
 
@@ -48,88 +49,174 @@
 		}
 		if (innerWidth && innerHeight && innerWidth >= 1536) {
 			// 2xl
-			firstSpan = parseFloat(
-				(2066528 / (innerWidth * innerHeight) + 256 / innerHeight).toPrecision(2)
-			);
-			firstBgSpan = firstSpan - parseFloat((0.1875 * firstSpan).toPrecision(2));
+			firstSpan = parseFloat((2407410 / (innerWidth * innerHeight)).toPrecision(2));
+			firstBgSpan = firstSpan - parseFloat((0.03125 * firstSpan).toPrecision(2));
+			secondBgSpan = secondSpan + parseFloat((0.171875 * secondSpan).toPrecision(2));
 			faceSpan = parseFloat((innerWidth / 1280).toPrecision(2));
 			introSpan = parseFloat((403200 / ((innerWidth - 192) * 0.75) / innerHeight).toPrecision(2));
 			skillsSpan = parseFloat((450 / innerHeight / innerHeight).toPrecision(2));
+
+			introStart = faceStart + faceSpan - 8 * padding;
+			firstStart = introStart + introSpan + 8 * padding;
+			firstSectionStart = firstStart + parseFloat((0.171875 * firstSpan).toPrecision(2));
+			let skillsPlace = firstStart + firstBgSpan + parseFloat((0.0625 * firstSpan).toPrecision(2));
+			skillsStart = skillsPlace - parseFloat((0.25 * firstSpan).toPrecision(2));
+			secondStart = skillsPlace + skillsSpan + padding * 2;
+			secondSectionStart = secondStart + parseFloat((0.171875 * secondSpan).toPrecision(2));
+			let ctaPlace = secondStart + secondSpan;
+			ctaStart = ctaPlace - parseFloat((0.25 * secondSpan).toPrecision(2));
+			formStart = ctaPlace + ctaSpan;
+			cStart = formStart + formSpan;
+
 			xxlScreen = true;
-			lgScreen = true;
+			xlScreen = false;
+			lgScreen = false;
 		} else if (innerWidth && innerHeight && innerWidth >= 1280) {
 			// xl
-			firstSpan = parseFloat(
-				(2066528 / (innerWidth * innerHeight) + 256 / innerHeight).toPrecision(2)
-			);
+			firstSpan = parseFloat((2216214 / (innerWidth * innerHeight)).toPrecision(2));
 			firstBgSpan = firstSpan - parseFloat((0.1875 * firstSpan).toPrecision(2));
+			secondBgSpan = secondSpan + parseFloat((0.0625 * secondSpan).toPrecision(2));
 			faceSpan = parseFloat((innerWidth / 1024).toPrecision(2));
 			introSpan = parseFloat((403200 / ((innerWidth - 192) * 0.75) / innerHeight).toPrecision(2));
 			skillsSpan = parseFloat((450 / innerHeight / innerHeight).toPrecision(2));
-			xxlScreen = true;
-			lgScreen = true;
+
+			introStart = faceStart + faceSpan;
+			firstStart = introStart + introSpan + 8 * padding;
+			firstSectionStart = firstStart + parseFloat((0.0625 * firstSpan).toPrecision(2));
+			let skillsPlace = firstStart + firstBgSpan + parseFloat((0.0625 * firstSpan).toPrecision(2));
+			skillsStart = skillsPlace - parseFloat((0.25 * firstSpan).toPrecision(2));
+			secondStart = skillsPlace + skillsSpan + padding * 8;
+			secondSectionStart = secondStart + parseFloat((0.171875 * secondSpan).toPrecision(2));
+			let ctaPlace = secondStart + secondSpan;
+			ctaStart = ctaPlace - parseFloat((0.25 * secondSpan).toPrecision(2));
+			formStart = ctaPlace + ctaSpan;
+			cStart = formStart + formSpan;
+
+			xxlScreen = false;
+			xlScreen = true;
+			lgScreen = false;
 		} else if (innerWidth && innerHeight && innerWidth >= 1024) {
 			// lg
 			firstSpan = parseFloat(
 				(2033664 / (innerWidth * innerHeight) + 592 / innerHeight).toPrecision(2)
 			);
-			firstBgSpan = firstSpan - parseFloat((0.1875 * firstSpan).toPrecision(2));
+			firstBgSpan = firstSpan - parseFloat((0.0625 * firstSpan).toPrecision(2));
+			secondBgSpan = secondSpan + parseFloat((0.03125 * secondSpan).toPrecision(2));
 			faceSpan = parseFloat((innerWidth / 768).toPrecision(2));
 			introSpan = parseFloat((403200 / (innerWidth * 0.75) / innerHeight).toPrecision(2));
 			skillsSpan = parseFloat((450 / innerHeight / innerHeight).toPrecision(2));
+
+			introStart = faceStart + faceSpan;
+			firstStart = introStart + introSpan + 8 * padding;
+			firstSectionStart = firstStart + parseFloat((0.0625 * firstSpan).toPrecision(2));
+			let skillsPlace = firstStart + firstBgSpan + parseFloat((0.0625 * firstSpan).toPrecision(2));
+			skillsStart = skillsPlace - parseFloat((0.25 * firstSpan).toPrecision(2));
+			secondStart = skillsPlace + skillsSpan + padding * 16;
+			secondSectionStart = secondStart + parseFloat((0.0625 * secondSpan).toPrecision(2));
+			let ctaPlace = secondStart + secondSpan;
+			ctaStart = ctaPlace - parseFloat((0.25 * secondSpan).toPrecision(2));
+			formStart = ctaPlace + ctaSpan;
+			cStart = formStart + formSpan;
+
 			xxlScreen = false;
+			xlScreen = false;
 			lgScreen = true;
 		} else if (innerWidth && innerHeight && innerWidth >= 768) {
 			// md
 			firstSpan = parseFloat(
 				(2033664 / (innerWidth * innerHeight) + 592 / innerHeight).toPrecision(2)
 			);
-			firstBgSpan = firstSpan - parseFloat((0.1875 * firstSpan).toPrecision(2));
+			firstBgSpan = firstSpan;
+			secondBgSpan = secondSpan;
 			faceSpan = parseFloat((innerWidth / 640).toPrecision(2));
 			introSpan = parseFloat((403200 / innerWidth / innerHeight).toPrecision(2));
 			skillsSpan = parseFloat(
 				((48 / innerHeight + 372448 / innerWidth) / innerHeight).toPrecision(2)
 			);
+
+			introStart = faceStart + faceSpan;
+			firstStart = introStart + introSpan + 8 * padding;
+			firstSectionStart = firstStart + parseFloat((0.0625 * firstSpan).toPrecision(2));
+			let skillsPlace = firstStart + firstBgSpan + parseFloat((0.0625 * firstSpan).toPrecision(2));
+			skillsStart = skillsPlace - parseFloat((0.375 * firstSpan).toPrecision(2));
+			secondStart = skillsPlace + skillsSpan + padding * 8;
+			secondSectionStart = secondStart + parseFloat((0.0625 * secondSpan).toPrecision(2));
+			let ctaPlace = secondStart + secondSpan;
+			ctaStart = ctaPlace - parseFloat((0.25 * secondSpan).toPrecision(2));
+			formStart = ctaPlace + ctaSpan;
+			cStart = formStart + formSpan;
+
 			xxlScreen = false;
+			xlScreen = false;
 			lgScreen = false;
 		} else if (innerWidth && innerHeight && innerWidth >= 640) {
 			// sm
 			firstSpan = parseFloat(
 				(2033664 / (innerWidth * innerHeight) + 592 / innerHeight).toPrecision(2)
 			);
-			firstBgSpan = firstSpan - parseFloat((0.1875 * firstSpan).toPrecision(2));
+			firstBgSpan = firstSpan;
+			secondBgSpan = secondSpan;
 			faceSpan = parseFloat((innerWidth / 576).toPrecision(2));
 			introSpan = parseFloat((403200 / innerWidth / innerHeight).toPrecision(2));
 			skillsSpan = parseFloat(
 				((48 / innerHeight + 372448 / innerWidth) / innerHeight).toPrecision(2)
 			);
+
+			introStart = faceStart + faceSpan;
+			firstStart = introStart + introSpan + 8 * padding;
+			firstSectionStart = firstStart + parseFloat((0.0625 * firstSpan).toPrecision(2));
+			let skillsPlace = firstStart + firstBgSpan + parseFloat((0.0625 * firstSpan).toPrecision(2));
+			skillsStart = skillsPlace - parseFloat((0.375 * firstSpan).toPrecision(2));
+			secondStart = skillsPlace + skillsSpan + padding * 8;
+			secondSectionStart = secondStart + parseFloat((0.0625 * secondSpan).toPrecision(2));
+			let ctaPlace = secondStart + secondSpan;
+			ctaStart = ctaPlace - parseFloat((0.25 * secondSpan).toPrecision(2)) - 2 * padding;
+			formStart = ctaPlace - parseFloat((0.25 * secondSpan).toPrecision(2));
+			cStart = formStart + formSpan + 2 * padding;
+
 			xxlScreen = false;
+			xlScreen = false;
 			lgScreen = false;
 		} else if (innerWidth && innerHeight) {
 			firstSpan = parseFloat(
 				(2033664 / (innerWidth * innerHeight) + 592 / innerHeight).toPrecision(2)
 			);
-			firstBgSpan = firstSpan - parseFloat((0.1875 * firstSpan).toPrecision(2));
+			secondBgSpan = secondSpan - parseFloat((0.46875 * secondSpan).toPrecision(2));
+			firstBgSpan = firstSpan - parseFloat((0.46875 * firstSpan).toPrecision(2));
 			faceSpan = parseFloat((innerWidth / 544).toPrecision(2));
 			introSpan = parseFloat((403200 / innerWidth / innerHeight).toPrecision(2));
 			skillsSpan = parseFloat(
 				((48 / innerHeight + 372448 / innerWidth) / innerHeight).toPrecision(2)
 			);
+
+			introStart = faceStart + faceSpan + 8 * padding;
+			firstStart = introStart + introSpan + 4 * padding;
+			firstSectionStart = firstStart + parseFloat((0.03125 * firstSpan).toPrecision(2));
+			let skillsPlace = firstStart + firstBgSpan - parseFloat((0.03125 * firstSpan).toPrecision(2));
+			skillsStart = skillsPlace - parseFloat((0.125 * firstSpan).toPrecision(2));
+			secondStart = skillsPlace + skillsSpan + padding * 10;
+			secondSectionStart = secondStart - parseFloat((0.0625 * secondSpan).toPrecision(2));
+			let ctaPlace = secondStart + secondSpan;
+			ctaStart = ctaPlace - parseFloat((0.25 * secondSpan).toPrecision(2));
+			formStart = ctaPlace - parseFloat((0.25 * secondSpan).toPrecision(2));
+			cStart = formStart + formSpan + 8 * padding;
+
 			xxlScreen = false;
+			xlScreen = false;
 			lgScreen = false;
 		}
 
-		introStart = faceStart + faceSpan + padding;
-		firstStart = introStart + introSpan + padding;
-		firstSectionStart = firstStart + parseFloat((0.03125 * firstSpan).toPrecision(2));
-		let skillsPlace = firstStart + firstBgSpan + parseFloat((0.0625 * firstSpan).toPrecision(2));
-		skillsStart = skillsPlace - parseFloat((0.25 * firstSpan).toPrecision(2));
-		secondStart = skillsPlace + skillsSpan + padding * 2;
-		secondSectionStart = secondStart + parseFloat((0.06125 * secondSpan).toPrecision(2));
-		let ctaPlace = secondStart + secondSpan;
-		ctaStart = ctaPlace - parseFloat((0.25 * secondSpan).toPrecision(2));
-		formStart = ctaPlace + ctaSpan;
-		cStart = formStart + formSpan;
+		// introStart = faceStart + faceSpan - 8 * padding;
+		// firstStart = introStart + introSpan + 8 * padding;
+		// firstSectionStart = firstStart + parseFloat((0.03125 * firstSpan).toPrecision(2));
+		// let skillsPlace = firstStart + firstBgSpan + parseFloat((0.0625 * firstSpan).toPrecision(2));
+		// skillsStart = skillsPlace - parseFloat((0.25 * firstSpan).toPrecision(2));
+		// secondStart = skillsPlace + skillsSpan + padding * 2;
+		// secondSectionStart = secondStart + parseFloat((0.06125 * secondSpan).toPrecision(2));
+		// let ctaPlace = secondStart + secondSpan;
+		// ctaStart = ctaPlace - parseFloat((0.25 * secondSpan).toPrecision(2));
+		// formStart = ctaPlace + ctaSpan;
+		// cStart = formStart + formSpan;
 
 		numSections = Math.ceil(cStart + cSpan);
 		console.table([
@@ -227,10 +314,10 @@
 			class="flex flex-row w-full justify-center items-center"
 		>
 			<div class="flex flex-row justify-center items-center w-full lg:max-w-[75%]">
-				{#if xxlScreen}
+				{#if xxlScreen || xlScreen}
 					<Icon icon="ic:baseline-less-than" width={300} height={500} color="white" />
 				{/if}
-				<p class="2xl:max-w-[75%] text-lg">
+				<p class="p-4 m-4 text-lg">
 					Welcome to my personal website! You can call me Annie! I'm a passionate machine learning
 					engineer and medical researcher currently based in sunny Los Angeles, CA. My journey in
 					the world of engineering started at the young age of six when I first laid hands on an
@@ -252,7 +339,7 @@
 					together through the realms of technology, machine learning, and the pursuit of a more
 					just and equitable society!
 				</p>
-				{#if xxlScreen}
+				{#if xxlScreen || xlScreen}
 					<Icon icon="ic:baseline-greater-than" width={300} height={500} color="white" />
 				{/if}
 			</div>
@@ -340,7 +427,7 @@
 
 		<ParallaxLayer
 			offset={ctaStart}
-			rate={0.15}
+			rate={-0.15}
 			span={ctaSpan}
 			class="flex flex-col w-full justify-center items-center"
 		>
@@ -385,7 +472,7 @@
 		>
 			<div class="flex flex-col xl:flex-row w-full justify-items-start justify-start items-center">
 				<h1 class="h1 lg:m-8 m-4 justify-self-start text-black third-header">Work Experience</h1>
-				{#if xxlScreen}
+				{#if xxlScreen || xlScreen}
 					<span class="divider-vertical w-2 m-0 p-0 h-20 justify-self-start" />
 				{/if}
 
@@ -423,7 +510,7 @@
 							</ul>
 						</section>
 					</div>
-					{#if xxlScreen}
+					{#if xxlScreen || xlScreen}
 						<span class="divider-vertical h-20" />
 					{/if}
 
@@ -463,7 +550,7 @@
 							</ul>
 						</section>
 					</div>
-					{#if xxlScreen}
+					{#if xxlScreen || xlScreen}
 						<span class="divider-vertical h-20" />
 					{/if}
 
@@ -512,7 +599,7 @@
 
 			<div class="flex flex-col xl:flex-row w-full justify-items-start justify-start items-center">
 				<h1 class="h1 lg:m-8 m-4 text-black third-header">Education</h1>
-				{#if xxlScreen}
+				{#if xxlScreen || xlScreen}
 					<span class="divider-vertical w-2 m-0 p-0 h-20 justify-self-start" />
 				{/if}
 
@@ -533,7 +620,7 @@
 
 			<div class="flex flex-col xl:flex-row w-full justify-items-start justify-start items-center">
 				<h1 class="h1 lg:m-8 m-4 text-black third-header">Projects</h1>
-				{#if xxlScreen}
+				{#if xxlScreen || xlScreen}
 					<span class="divider-vertical w-2 m-0 p-0 h-20 justify-self-start" />
 				{/if}
 
@@ -553,7 +640,7 @@
 							to <em><i>"leap"</i></em> out of a local minimum.
 						</p>
 					</div>
-					{#if xxlScreen}
+					{#if xxlScreen || xlScreen}
 						<span class="divider-vertical h-20" />
 					{/if}
 
@@ -571,7 +658,7 @@
 							splicing as well as a proposal for a novel RNA-Seq alignment algorithm.
 						</p>
 					</div>
-					{#if xxlScreen}
+					{#if xxlScreen || xlScreen}
 						<span class="divider-vertical h-20" />
 					{/if}
 
@@ -586,7 +673,7 @@
 							InnovateIowa conference.
 						</p>
 					</div>
-					{#if xxlScreen}
+					{#if xxlScreen || xlScreen}
 						<span class="divider-vertical h-20" />
 					{/if}
 
@@ -621,7 +708,7 @@
 							text categorization.
 						</p>
 					</div>
-					{#if xxlScreen}
+					{#if xxlScreen || xlScreen}
 						<span class="divider-vertical h-20" />
 					{/if}
 
@@ -636,7 +723,7 @@
 							>.
 						</p>
 					</div>
-					{#if xxlScreen}
+					{#if xxlScreen || xlScreen}
 						<span class="divider-vertical h-20" />
 					{/if}
 
@@ -651,7 +738,7 @@
 							successful traits.
 						</p>
 					</div>
-					{#if xxlScreen}
+					{#if xxlScreen || xlScreen}
 						<span class="divider-vertical h-20" />
 					{/if}
 
@@ -671,7 +758,7 @@
 		<ParallaxLayer
 			offset={secondStart}
 			rate={0.5}
-			span={secondSpan}
+			span={secondBgSpan}
 			class="bg-black flex w-full justify-center items-start pointer-events-none"
 		/>
 
@@ -683,7 +770,7 @@
 		>
 			<div class="flex flex-col xl:flex-row w-full justify-items-start justify-start items-center">
 				<h1 class="h1 lg:m-8 m-4 text-white third-header">Publications</h1>
-				{#if xxlScreen}
+				{#if xxlScreen || xlScreen}
 					<span class="divider-vertical w-2 m-0 p-0 h-20 justify-self-start" />
 				{/if}
 
@@ -708,7 +795,7 @@
 							>
 						</footer>
 					</div>
-					{#if xxlScreen}
+					{#if xxlScreen || xlScreen}
 						<span class="divider-vertical h-20" />
 					{/if}
 
@@ -742,7 +829,7 @@
 					class="flex flex-col xl:flex-row min-w-[60%] justify-items-start justify-start items-center"
 				>
 					<h1 class="h1 lg:m-8 m-4 text-white third-header">Awards</h1>
-					{#if xxlScreen}
+					{#if xxlScreen || xlScreen}
 						<span class="divider-vertical w-2 m-0 p-0 h-20 justify-self-start" />
 					{/if}
 
@@ -754,7 +841,7 @@
 							</section>
 							<footer class="text-xl text-slate-200">March 2018</footer>
 						</div>
-						{#if xxlScreen}
+						{#if xxlScreen || xlScreen}
 							<span class="divider-vertical h-20" />
 						{/if}
 
@@ -772,7 +859,7 @@
 					class="flex flex-col xl:flex-row min-w-[40%] justify-items-start justify-start items-center"
 				>
 					<h1 class="h1 lg:m-8 m-4 text-white third-header">Certifications</h1>
-					{#if xxlScreen}
+					{#if xxlScreen || xlScreen}
 						<span class="divider-vertical w-2 m-0 p-0 h-20 justify-self-start" />
 					{/if}
 
@@ -794,7 +881,7 @@
 			</div>
 			<div class="flex flex-col xl:flex-row w-full justify-items-start justify-start items-center">
 				<h1 class="h1 lg:m-8 m-4 text-white third-header">Coursework</h1>
-				{#if xxlScreen}
+				{#if xxlScreen || xlScreen}
 					<span class="divider-vertical w-2 m-0 p-0 h-30 justify-self-start" />
 				{/if}
 
@@ -804,7 +891,7 @@
 					<div class="flex flex-col mx-4 my-3 justify-items-start justify-start items-start">
 						<span class="text-xl h3 text-white"> Endocrinology </span>
 					</div>
-					{#if xxlScreen || lgScreen}
+					{#if xxlScreen || lgScreen || xlScreen}
 						<span class="divider-vertical h-10" />
 					{/if}
 
@@ -813,14 +900,14 @@
 							Bioinformatics & Computational Molecular Biology
 						</span>
 					</div>
-					{#if xxlScreen || lgScreen}
+					{#if xxlScreen || lgScreen || xlScreen}
 						<span class="divider-vertical h-10" />
 					{/if}
 
 					<div class="flex flex-col mx-4 my-3 justify-items-start justify-start items-start">
 						<span class="text-xl h3 text-white"> Engineering Computing </span>
 					</div>
-					{#if xxlScreen}
+					{#if xxlScreen || xlScreen}
 						<span class="divider-vertical h-10" />
 					{/if}
 
@@ -834,18 +921,21 @@
 					<div class="flex flex-col mx-4 my-3 justify-items-start justify-start items-start">
 						<span class="text-xl h3 text-white"> Research in Artificial Intelligence </span>
 					</div>
-					{#if xxlScreen || lgScreen}
+					{#if xxlScreen || lgScreen || xlScreen}
 						<span class="divider-vertical h-10" />
 					{/if}
 
 					<div class="flex flex-col mx-4 my-3 justify-items-start justify-start items-start">
 						<span class="text-xl h3 text-white"> Hormones and Behavior </span>
 					</div>
+					{#if xlScreen}
+						<span class="divider-vertical h-10" />
+					{/if}
 
 					<div class="flex flex-col mx-4 my-3 justify-items-start justify-start items-start">
 						<span class="text-xl h3 text-white"> Organic Chemistry I & II </span>
 					</div>
-					{#if xxlScreen || lgScreen}
+					{#if xxlScreen || lgScreen || xlScreen}
 						<span class="divider-vertical h-10" />
 					{/if}
 
@@ -859,21 +949,21 @@
 					<div class="flex flex-col mx-4 my-3 justify-items-start justify-start items-start">
 						<span class="text-xl h3 text-white"> Multi-Variate Calculus </span>
 					</div>
-					{#if xxlScreen}
+					{#if xxlScreen || xlScreen}
 						<span class="divider-vertical h-10" />
 					{/if}
 
 					<div class="flex flex-col mx-4 my-3 justify-items-start justify-start items-start">
 						<span class="text-xl h3 text-white"> Methods in Microbiology </span>
 					</div>
-					{#if xxlScreen || lgScreen}
+					{#if xxlScreen || lgScreen || xlScreen}
 						<span class="divider-vertical h-10" />
 					{/if}
 
 					<div class="flex flex-col mx-4 my-3 justify-items-start justify-start items-start">
 						<span class="text-xl h3 text-white"> Animal Physiology </span>
 					</div>
-					{#if xxlScreen || lgScreen}
+					{#if xxlScreen || lgScreen || xlScreen}
 						<span class="divider-vertical h-10" />
 					{/if}
 
@@ -955,7 +1045,7 @@
 		</ParallaxLayer>
 
 		<StickyLayer
-			offset={{ top: 0, bottom: 1.25 }}
+			offset={{ top: faceStart, bottom: firstStart }}
 			class="flex flex-row transition-all items-start justify-center bg-transparent pointer-events-none {stickyLayer1}"
 			onProgress={(p) => {
 				if (p > 0.9) {
@@ -963,10 +1053,10 @@
 				} else if (p <= 0.9) {
 					stickyLayer1 = 'opacity-100';
 				}
-				if (section === 0 && p > 0.8) {
-					section = 1.5;
-				} else if (section === 1.5 && p < 0.5) {
-					section = 0;
+				if (section === faceStart && p > 0.8) {
+					section = firstStart;
+				} else if (section === firstStart && p < 0.5) {
+					section = faceStart;
 				}
 				if (p > 0.2) {
 					topButton = 'opacity-100 pointer-events-auto cursor-pointer';
@@ -988,7 +1078,7 @@
 					<button
 						type="button"
 						class="cursor-pointer m-1 button pointer-events-auto bg-white p-1"
-						on:click={() => increaseSection(1.25)}
+						on:click={() => increaseSection(faceStart - firstStart)}
 					>
 						<Icon icon="ph:caret-right" color="black" height={32} />
 					</button>
@@ -1004,7 +1094,7 @@
 		</StickyLayer>
 
 		<StickyLayer
-			offset={{ top: 1.25, bottom: 2.75 }}
+			offset={{ top: firstStart, bottom: secondStart }}
 			class="flex flex-row transition-all items-start justify-center bg-transparent pointer-events-none {stickyLayer2}"
 			onProgress={(p) => {
 				if (p > 0.9 || p < 0.1) {
@@ -1012,10 +1102,10 @@
 				} else if (p <= 0.9 && p >= 0.1) {
 					stickyLayer2 = 'opacity-100';
 				}
-				if (section === 1.5 && p > 0.8) {
-					section = 3;
-				} else if (section === 3 && p < 0.5) {
-					section = 1.5;
+				if (section === firstStart && p > 0.8) {
+					section = secondStart;
+				} else if (section === secondStart && p < 0.5) {
+					section = firstStart;
 				}
 			}}
 		>
@@ -1031,7 +1121,7 @@
 					<button
 						type="button"
 						class="button pointer-events-auto cursor-pointer m-1 bg-black p-1"
-						on:click={() => decreaseSection(1.5)}
+						on:click={() => decreaseSection(firstStart - faceStart)}
 					>
 						<Icon icon="ph:caret-left" color="white" height={32} />
 					</button>
@@ -1040,7 +1130,7 @@
 					<button
 						type="button"
 						class="cursor-pointer m-1 button pointer-events-auto bg-black p-1"
-						on:click={() => increaseSection(1.5)}
+						on:click={() => increaseSection(secondStart - firstStart)}
 					>
 						<Icon icon="ph:caret-right" color="white" height={32} />
 					</button>
@@ -1056,7 +1146,7 @@
 		</StickyLayer>
 
 		<StickyLayer
-			offset={{ top: 2.75, bottom: 3.75 }}
+			offset={{ top: secondStart, bottom: ctaStart }}
 			class="flex flex-row transition-all items-start justify-center bg-transparent pointer-events-none {stickyLayer3}"
 			onProgress={(p) => {
 				if (p > 0.9 || p < 0.1) {
@@ -1064,10 +1154,10 @@
 				} else if (p <= 0.9 && p >= 0.1) {
 					stickyLayer3 = 'opacity-100';
 				}
-				if (section === 3 && p > 0.8) {
-					section = 4;
-				} else if (section === 4 && p < 0.5) {
-					section = 3;
+				if (section === secondStart && p > 0.8) {
+					section = ctaStart;
+				} else if (section === ctaStart && p < 0.5) {
+					section = secondStart;
 				}
 			}}
 		>
@@ -1083,7 +1173,7 @@
 					<button
 						type="button"
 						class="button pointer-events-auto cursor-pointer m-1 bg-white p-1"
-						on:click={() => decreaseSection(1.5)}
+						on:click={() => decreaseSection(secondStart - firstStart)}
 					>
 						<Icon icon="ph:caret-left" color="black" height={32} />
 					</button>
@@ -1092,7 +1182,7 @@
 					<button
 						type="button"
 						class="cursor-pointer m-1 button pointer-events-auto bg-white p-1"
-						on:click={() => increaseSection(1)}
+						on:click={() => increaseSection(ctaStart - secondStart)}
 					>
 						<Icon icon="ph:caret-right" color="black" height={32} />
 					</button>
@@ -1108,7 +1198,7 @@
 		</StickyLayer>
 
 		<StickyLayer
-			offset={{ top: 3.75, bottom: 5 }}
+			offset={{ top: ctaStart, bottom: cStart + cSpan }}
 			class="flex flex-row transition-all items-start justify-center bg-transparent pointer-events-none {stickyLayer4}"
 			onProgress={(p) => {
 				if (p > 0.9 || p < 0.1) {
@@ -1128,7 +1218,11 @@
 					<button type="button" class="button m-1 bg-white p-1" on:click={goToTop}>
 						<Icon icon="ph:caret-double-left" color="black" height={32} />
 					</button>
-					<button type="button" class="button m-1 bg-white p-1" on:click={() => decreaseSection(1)}>
+					<button
+						type="button"
+						class="button m-1 bg-white p-1"
+						on:click={() => decreaseSection(ctaStart - secondStart)}
+					>
 						<Icon icon="ph:caret-left" color="black" height={32} />
 					</button>
 				</div>
@@ -1158,17 +1252,18 @@
 		position: absolute;
 		font-family: 'Noto Serif Display';
 		font-weight: 200;
+		font-size: 30rem;
 		text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
 	}
 
 	.initial-a {
-		margin-right: 20rem;
+		margin-right: 10rem;
 		margin-bottom: 10rem;
 		z-index: 1000;
 	}
 
 	.initial-e {
-		margin-left: 20rem;
+		margin-left: 10rem;
 		margin-top: 10rem;
 	}
 
@@ -1185,7 +1280,13 @@
 			width: 576px;
 		}
 		.initial {
-			font-size: 80rem;
+			font-size: 30rem;
+		}
+		.initial-a {
+			margin-right: 10rem;
+		}
+		.initial-e {
+			margin-left: 10rem;
 		}
 	}
 	/* sm */
@@ -1196,7 +1297,13 @@
 			width: 640px;
 		}
 		.initial {
-			font-size: 80rem;
+			font-size: 40rem;
+		}
+		.initial-a {
+			margin-right: 15rem;
+		}
+		.initial-e {
+			margin-left: 15rem;
 		}
 	}
 	/* md */
@@ -1247,10 +1354,21 @@
 		.initial {
 			font-size: 50rem;
 		}
+		.initial-a {
+			margin-right: 20rem;
+		}
+		.initial-e {
+			margin-left: 20rem;
+		}
 		.third-header {
 			writing-mode: vertical-rl;
 			text-orientation: sideways-right;
 			transform: rotate(180deg);
+		}
+		.grid-6 {
+			row-gap: 1rem;
+			grid-template-columns: 1fr 1px 1fr 1px 1fr 1px 1fr;
+			grid-template-rows: repeat(3, 1fr);
 		}
 	}
 	/* xl */
@@ -1262,6 +1380,17 @@
 		}
 		.initial {
 			font-size: 75rem;
+		}
+		.initial-a {
+			margin-right: 20rem;
+		}
+		.initial-e {
+			margin-left: 20rem;
+		}
+		.grid-6 {
+			row-gap: 1rem;
+			grid-template-columns: 1fr 1px 1fr 1px 1fr 1px 1fr 1px 1fr 1px 1fr;
+			grid-template-rows: repeat(2, 1fr);
 		}
 	}
 	/* 2xl */
