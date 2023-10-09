@@ -1,5 +1,7 @@
 <script lang="ts">
-	import { Parallax, ParallaxLayer, StickyLayer } from 'svelte-parallax';
+	import Parallax from '$components/Parallax.svelte';
+	import ParallaxLayer from '$components/ParallaxLayer.svelte';
+	import StickyLayer from '$components/StickyLayer.svelte';
 	import { disabled } from '$stores';
 	import Icon from '@iconify/svelte';
 	import { enhance } from '$app/forms';
@@ -7,6 +9,7 @@
 	let parallax: Parallax;
 	let innerWidth: number;
 	let innerHeight: number;
+	let scrollY: number;
 	let xxlScreen: boolean;
 	let xlScreen: boolean;
 	let lgScreen: boolean;
@@ -41,7 +44,7 @@
 
 	$: {
 		if (innerWidth && innerHeight) {
-			secondSpan = parseFloat((1396636 / innerWidth / innerHeight).toPrecision(2));
+			secondSpan = parseFloat((3163053 / (innerWidth * innerHeight)).toPrecision(2));
 			ctaSpan = parseFloat((48 / innerHeight).toPrecision(2));
 			formSpan = parseFloat((438 / innerHeight).toPrecision(2));
 			cSpan = parseFloat((56 / innerHeight).toPrecision(2));
@@ -49,22 +52,24 @@
 		}
 		if (innerWidth && innerHeight && innerWidth >= 1536) {
 			// 2xl
-			firstSpan = parseFloat((2407410 / (innerWidth * innerHeight)).toPrecision(2));
-			firstBgSpan = firstSpan - parseFloat((0.03125 * firstSpan).toPrecision(2));
-			secondBgSpan = secondSpan + parseFloat((0.171875 * secondSpan).toPrecision(2));
-			faceSpan = parseFloat((innerWidth / 1280).toPrecision(2));
+			firstSpan = parseFloat(
+				(2877696 / (innerWidth * innerHeight) + 368 / innerHeight).toPrecision(2)
+			);
+			firstBgSpan = firstSpan; //- parseFloat((0.03125 * firstSpan).toPrecision(2));
+			secondBgSpan = secondSpan; // + parseFloat((0.171875 * secondSpan).toPrecision(2));
+			faceSpan = parseFloat((1280 / innerHeight).toPrecision(2));
 			introSpan = parseFloat((403200 / ((innerWidth - 192) * 0.75) / innerHeight).toPrecision(2));
-			skillsSpan = parseFloat((450 / innerHeight / innerHeight).toPrecision(2));
+			skillsSpan = parseFloat((450 / innerHeight).toPrecision(2));
 
-			introStart = faceStart + faceSpan - 8 * padding;
-			firstStart = introStart + introSpan + 8 * padding;
-			firstSectionStart = firstStart + parseFloat((0.171875 * firstSpan).toPrecision(2));
-			let skillsPlace = firstStart + firstBgSpan + parseFloat((0.0625 * firstSpan).toPrecision(2));
-			skillsStart = skillsPlace - parseFloat((0.25 * firstSpan).toPrecision(2));
-			secondStart = skillsPlace + skillsSpan + padding * 2;
-			secondSectionStart = secondStart + parseFloat((0.171875 * secondSpan).toPrecision(2));
+			introStart = faceStart + faceSpan; // - 8 * padding;
+			firstStart = introStart + introSpan; // + 8 * padding;
+			firstSectionStart = firstStart; // + parseFloat((0.171875 * firstSpan).toPrecision(2));
+			let skillsPlace = firstStart + firstBgSpan; // + parseFloat((0.0625 * firstSpan).toPrecision(2));
+			skillsStart = skillsPlace; // - parseFloat((0.25 * firstSpan).toPrecision(2));
+			secondStart = skillsPlace + skillsSpan; // + padding * 2;
+			secondSectionStart = secondStart; // + parseFloat((0.171875 * secondSpan).toPrecision(2));
 			let ctaPlace = secondStart + secondSpan;
-			ctaStart = ctaPlace - parseFloat((0.25 * secondSpan).toPrecision(2));
+			ctaStart = ctaPlace; // - parseFloat((0.25 * secondSpan).toPrecision(2));
 			formStart = ctaPlace + ctaSpan;
 			cStart = formStart + formSpan;
 
@@ -206,18 +211,6 @@
 			lgScreen = false;
 		}
 
-		// introStart = faceStart + faceSpan - 8 * padding;
-		// firstStart = introStart + introSpan + 8 * padding;
-		// firstSectionStart = firstStart + parseFloat((0.03125 * firstSpan).toPrecision(2));
-		// let skillsPlace = firstStart + firstBgSpan + parseFloat((0.0625 * firstSpan).toPrecision(2));
-		// skillsStart = skillsPlace - parseFloat((0.25 * firstSpan).toPrecision(2));
-		// secondStart = skillsPlace + skillsSpan + padding * 2;
-		// secondSectionStart = secondStart + parseFloat((0.06125 * secondSpan).toPrecision(2));
-		// let ctaPlace = secondStart + secondSpan;
-		// ctaStart = ctaPlace - parseFloat((0.25 * secondSpan).toPrecision(2));
-		// formStart = ctaPlace + ctaSpan;
-		// cStart = formStart + formSpan;
-
 		numSections = Math.ceil(cStart + cSpan);
 		console.table([
 			[
@@ -303,7 +296,7 @@
 	let bottomButton = 'opacity-100 pointer-events-auto cursor-pointer';
 </script>
 
-<svelte:window bind:innerWidth bind:innerHeight />
+<svelte:window bind:innerWidth bind:innerHeight bind:scrollY />
 
 {#if mounted}
 	<Parallax sections={numSections} disabled={$disabled} bind:this={parallax}>

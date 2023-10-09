@@ -91,6 +91,9 @@ devDependencies:
   svelte-preprocess:
     specifier: ^5.0.4
     version: 5.0.4(postcss@8.4.31)(svelte@4.2.1)(typescript@5.2.2)
+  svelte-typed-context:
+    specifier: ^1.0.1
+    version: 1.0.1(svelte@4.2.1)
   tailwindcss:
     specifier: 3.3.3
     version: 3.3.3
@@ -2727,6 +2730,14 @@ packages:
       strip-indent: 3.0.0
       svelte: 4.2.1
       typescript: 5.2.2
+    dev: true
+
+  /svelte-typed-context@1.0.1(svelte@4.2.1):
+    resolution: {integrity: sha512-JX0XOntE0JGKh5rldnKwIQVHXVB15RcwTg7Al/nyLjX+2NSt4Y+hoZ3+apnBjX5K8ge0tklJMqZLCVD7bYZE9g==}
+    peerDependencies:
+      svelte: ^3.38.2
+    dependencies:
+      svelte: 4.2.1
     dev: true
 
   /svelte@4.2.1:

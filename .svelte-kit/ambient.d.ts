@@ -53,6 +53,7 @@ declare module '$env/static/private' {
 	export const __ABBR_TIPS_KEYS: string;
 	export const WINDOWID: string;
 	export const fish_color_escape: string;
+	export const npm_package_devDependencies_svelte_typed_context: string;
 	export const __ABBR_TIPS_VALUES: string;
 	export const npm_config_registry: string;
 	export const npm_package_devDependencies__sveltejs_kit: string;
@@ -223,6 +224,7 @@ declare module '$env/dynamic/private' {
 		__ABBR_TIPS_KEYS: string;
 		WINDOWID: string;
 		fish_color_escape: string;
+		npm_package_devDependencies_svelte_typed_context: string;
 		__ABBR_TIPS_VALUES: string;
 		npm_config_registry: string;
 		npm_package_devDependencies__sveltejs_kit: string;
