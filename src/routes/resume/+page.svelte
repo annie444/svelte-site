@@ -10,9 +10,9 @@
 	let innerWidth: number;
 	let innerHeight: number;
 	let scrollY: number;
-	let xxlScreen: boolean;
-	let xlScreen: boolean;
-	let lgScreen: boolean;
+	let xxlScreen: boolean = false;
+	let xlScreen: boolean = false;
+	let lgScreen: boolean = false;
 	let section = 0;
 
 	let faceSpan: number;
@@ -42,6 +42,8 @@
 
 	let mounted: boolean = false;
 
+	$: console.log(innerWidth);
+
 	$: {
 		if (innerWidth && innerHeight) {
 			secondSpan = parseFloat((3163053 / (innerWidth * innerHeight)).toPrecision(2));
@@ -49,8 +51,6 @@
 			formSpan = parseFloat((438 / innerHeight).toPrecision(2));
 			cSpan = parseFloat((56 / innerHeight).toPrecision(2));
 			padding = parseFloat((16 / innerHeight).toPrecision(2));
-		}
-		if (innerWidth && innerHeight && innerWidth >= 1536) {
 			// 2xl
 			firstSpan = parseFloat(
 				(2877696 / (innerWidth * innerHeight) + 368 / innerHeight).toPrecision(2)
@@ -298,7 +298,7 @@
 
 <svelte:window bind:innerWidth bind:innerHeight bind:scrollY />
 
-{#if mounted}
+{#if mounted && mounted === true}
 	<Parallax sections={numSections} disabled={$disabled} bind:this={parallax}>
 		<ParallaxLayer
 			offset={introStart}
@@ -307,7 +307,7 @@
 			class="flex flex-row w-full justify-center items-center"
 		>
 			<div class="flex flex-row justify-center items-center w-full lg:max-w-[75%]">
-				{#if xxlScreen || xlScreen}
+				{#if (xxlScreen && xxlScreen === true) || (xlScreen && xlScreen === true)}
 					<Icon icon="ic:baseline-less-than" width={300} height={500} color="white" />
 				{/if}
 				<p class="p-4 m-4 text-lg">
@@ -332,7 +332,7 @@
 					together through the realms of technology, machine learning, and the pursuit of a more
 					just and equitable society!
 				</p>
-				{#if xxlScreen || xlScreen}
+				{#if (xxlScreen && xxlScreen === true) || (xlScreen && xlScreen === true)}
 					<Icon icon="ic:baseline-greater-than" width={300} height={500} color="white" />
 				{/if}
 			</div>
@@ -465,7 +465,7 @@
 		>
 			<div class="flex flex-col xl:flex-row w-full justify-items-start justify-start items-center">
 				<h1 class="h1 lg:m-8 m-4 justify-self-start text-black third-header">Work Experience</h1>
-				{#if xxlScreen || xlScreen}
+				{#if (xxlScreen && xxlScreen === true) || (xlScreen && xlScreen === true)}
 					<span class="divider-vertical w-2 m-0 p-0 h-20 justify-self-start" />
 				{/if}
 
@@ -503,7 +503,7 @@
 							</ul>
 						</section>
 					</div>
-					{#if xxlScreen || xlScreen}
+					{#if (xxlScreen && xxlScreen === true) || (xlScreen && xlScreen === true)}
 						<span class="divider-vertical h-20" />
 					{/if}
 
@@ -543,7 +543,7 @@
 							</ul>
 						</section>
 					</div>
-					{#if xxlScreen || xlScreen}
+					{#if (xxlScreen && xxlScreen === true) || (xlScreen && xlScreen === true)}
 						<span class="divider-vertical h-20" />
 					{/if}
 
@@ -592,7 +592,7 @@
 
 			<div class="flex flex-col xl:flex-row w-full justify-items-start justify-start items-center">
 				<h1 class="h1 lg:m-8 m-4 text-black third-header">Education</h1>
-				{#if xxlScreen || xlScreen}
+				{#if (xxlScreen && xxlScreen === true) || (xlScreen && xlScreen === true)}
 					<span class="divider-vertical w-2 m-0 p-0 h-20 justify-self-start" />
 				{/if}
 
@@ -613,7 +613,7 @@
 
 			<div class="flex flex-col xl:flex-row w-full justify-items-start justify-start items-center">
 				<h1 class="h1 lg:m-8 m-4 text-black third-header">Projects</h1>
-				{#if xxlScreen || xlScreen}
+				{#if (xxlScreen && xxlScreen === true) || (xlScreen && xlScreen === true)}
 					<span class="divider-vertical w-2 m-0 p-0 h-20 justify-self-start" />
 				{/if}
 
@@ -633,7 +633,7 @@
 							to <em><i>"leap"</i></em> out of a local minimum.
 						</p>
 					</div>
-					{#if xxlScreen || xlScreen}
+					{#if (xxlScreen && xxlScreen === true) || (xlScreen && xlScreen === true)}
 						<span class="divider-vertical h-20" />
 					{/if}
 
@@ -651,7 +651,7 @@
 							splicing as well as a proposal for a novel RNA-Seq alignment algorithm.
 						</p>
 					</div>
-					{#if xxlScreen || xlScreen}
+					{#if (xxlScreen && xxlScreen === true) || (xlScreen && xlScreen === true)}
 						<span class="divider-vertical h-20" />
 					{/if}
 
@@ -666,7 +666,7 @@
 							InnovateIowa conference.
 						</p>
 					</div>
-					{#if xxlScreen || xlScreen}
+					{#if (xxlScreen && xxlScreen === true) || (xlScreen && xlScreen === true)}
 						<span class="divider-vertical h-20" />
 					{/if}
 
@@ -701,7 +701,7 @@
 							text categorization.
 						</p>
 					</div>
-					{#if xxlScreen || xlScreen}
+					{#if (xxlScreen && xxlScreen === true) || (xlScreen && xlScreen === true)}
 						<span class="divider-vertical h-20" />
 					{/if}
 
@@ -716,7 +716,7 @@
 							>.
 						</p>
 					</div>
-					{#if xxlScreen || xlScreen}
+					{#if (xxlScreen && xxlScreen === true) || (xlScreen && xlScreen === true)}
 						<span class="divider-vertical h-20" />
 					{/if}
 
@@ -731,7 +731,7 @@
 							successful traits.
 						</p>
 					</div>
-					{#if xxlScreen || xlScreen}
+					{#if (xxlScreen && xxlScreen === true) || (xlScreen && xlScreen === true)}
 						<span class="divider-vertical h-20" />
 					{/if}
 
@@ -763,7 +763,7 @@
 		>
 			<div class="flex flex-col xl:flex-row w-full justify-items-start justify-start items-center">
 				<h1 class="h1 lg:m-8 m-4 text-white third-header">Publications</h1>
-				{#if xxlScreen || xlScreen}
+				{#if (xxlScreen && xxlScreen === true) || (xlScreen && xlScreen === true)}
 					<span class="divider-vertical w-2 m-0 p-0 h-20 justify-self-start" />
 				{/if}
 
@@ -788,7 +788,7 @@
 							>
 						</footer>
 					</div>
-					{#if xxlScreen || xlScreen}
+					{#if (xxlScreen && xxlScreen === true) || (xlScreen && xlScreen === true)}
 						<span class="divider-vertical h-20" />
 					{/if}
 
@@ -822,7 +822,7 @@
 					class="flex flex-col xl:flex-row min-w-[60%] justify-items-start justify-start items-center"
 				>
 					<h1 class="h1 lg:m-8 m-4 text-white third-header">Awards</h1>
-					{#if xxlScreen || xlScreen}
+					{#if (xxlScreen && xxlScreen === true) || (xlScreen && xlScreen === true)}
 						<span class="divider-vertical w-2 m-0 p-0 h-20 justify-self-start" />
 					{/if}
 
@@ -834,7 +834,7 @@
 							</section>
 							<footer class="text-xl text-slate-200">March 2018</footer>
 						</div>
-						{#if xxlScreen || xlScreen}
+						{#if (xxlScreen && xxlScreen === true) || (xlScreen && xlScreen === true)}
 							<span class="divider-vertical h-20" />
 						{/if}
 
@@ -852,7 +852,7 @@
 					class="flex flex-col xl:flex-row min-w-[40%] justify-items-start justify-start items-center"
 				>
 					<h1 class="h1 lg:m-8 m-4 text-white third-header">Certifications</h1>
-					{#if xxlScreen || xlScreen}
+					{#if (xxlScreen && xxlScreen === true) || (xlScreen && xlScreen === true)}
 						<span class="divider-vertical w-2 m-0 p-0 h-20 justify-self-start" />
 					{/if}
 
@@ -874,7 +874,7 @@
 			</div>
 			<div class="flex flex-col xl:flex-row w-full justify-items-start justify-start items-center">
 				<h1 class="h1 lg:m-8 m-4 text-white third-header">Coursework</h1>
-				{#if xxlScreen || xlScreen}
+				{#if (xxlScreen && xxlScreen === true) || (xlScreen && xlScreen === true)}
 					<span class="divider-vertical w-2 m-0 p-0 h-30 justify-self-start" />
 				{/if}
 
@@ -884,7 +884,7 @@
 					<div class="flex flex-col mx-4 my-3 justify-items-start justify-start items-start">
 						<span class="text-xl h3 text-white"> Endocrinology </span>
 					</div>
-					{#if xxlScreen || lgScreen || xlScreen}
+					{#if (xxlScreen && xxlScreen === true) || (lgScreen && lgScreen === true) || (xlScreen && xlScreen === true)}
 						<span class="divider-vertical h-10" />
 					{/if}
 
@@ -893,70 +893,70 @@
 							Bioinformatics & Computational Molecular Biology
 						</span>
 					</div>
-					{#if xxlScreen || lgScreen || xlScreen}
+					{#if (xxlScreen && xxlScreen === true) || (lgScreen && lgScreen === true) || (xlScreen && xlScreen === true)}
 						<span class="divider-vertical h-10" />
 					{/if}
 
 					<div class="flex flex-col mx-4 my-3 justify-items-start justify-start items-start">
 						<span class="text-xl h3 text-white"> Engineering Computing </span>
 					</div>
-					{#if xxlScreen || xlScreen}
+					{#if (xxlScreen && xxlScreen === true) || (xlScreen && xlScreen === true)}
 						<span class="divider-vertical h-10" />
 					{/if}
 
 					<div class="flex flex-col mx-4 my-3 justify-items-start justify-start items-start">
 						<span class="text-xl h3 text-white"> Machine Learning </span>
 					</div>
-					{#if xxlScreen || lgScreen}
+					{#if (xxlScreen && xxlScreen === true) || (lgScreen && lgScreen === true)}
 						<span class="divider-vertical h-10" />
 					{/if}
 
 					<div class="flex flex-col mx-4 my-3 justify-items-start justify-start items-start">
 						<span class="text-xl h3 text-white"> Research in Artificial Intelligence </span>
 					</div>
-					{#if xxlScreen || lgScreen || xlScreen}
+					{#if (xxlScreen && xxlScreen === true) || (lgScreen && lgScreen === true) || (xlScreen && xlScreen === true)}
 						<span class="divider-vertical h-10" />
 					{/if}
 
 					<div class="flex flex-col mx-4 my-3 justify-items-start justify-start items-start">
 						<span class="text-xl h3 text-white"> Hormones and Behavior </span>
 					</div>
-					{#if xlScreen}
+					{#if xlScreen && xlScreen === true}
 						<span class="divider-vertical h-10" />
 					{/if}
 
 					<div class="flex flex-col mx-4 my-3 justify-items-start justify-start items-start">
 						<span class="text-xl h3 text-white"> Organic Chemistry I & II </span>
 					</div>
-					{#if xxlScreen || lgScreen || xlScreen}
+					{#if (xxlScreen && xxlScreen === true) || (lgScreen && lgScreen === true) || (xlScreen && xlScreen === true)}
 						<span class="divider-vertical h-10" />
 					{/if}
 
 					<div class="flex flex-col mx-4 my-3 justify-items-start justify-start items-start">
 						<span class="text-xl h3 text-white"> Linear & Matrix Algebra </span>
 					</div>
-					{#if xxlScreen || lgScreen}
+					{#if (xxlScreen && xxlScreen === true) || (lgScreen && lgScreen === true)}
 						<span class="divider-vertical h-10" />
 					{/if}
 
 					<div class="flex flex-col mx-4 my-3 justify-items-start justify-start items-start">
 						<span class="text-xl h3 text-white"> Multi-Variate Calculus </span>
 					</div>
-					{#if xxlScreen || xlScreen}
+					{#if (xxlScreen && xxlScreen === true) || (xlScreen && xlScreen === true)}
 						<span class="divider-vertical h-10" />
 					{/if}
 
 					<div class="flex flex-col mx-4 my-3 justify-items-start justify-start items-start">
 						<span class="text-xl h3 text-white"> Methods in Microbiology </span>
 					</div>
-					{#if xxlScreen || lgScreen || xlScreen}
+					{#if (xxlScreen && xxlScreen === true) || (lgScreen && lgScreen === true) || (xlScreen && xlScreen === true)}
 						<span class="divider-vertical h-10" />
 					{/if}
 
 					<div class="flex flex-col mx-4 my-3 justify-items-start justify-start items-start">
 						<span class="text-xl h3 text-white"> Animal Physiology </span>
 					</div>
-					{#if xxlScreen || lgScreen || xlScreen}
+					{#if (xxlScreen && xxlScreen === true) || (lgScreen && lgScreen === true) || (xlScreen && xlScreen === true)}
 						<span class="divider-vertical h-10" />
 					{/if}
 
