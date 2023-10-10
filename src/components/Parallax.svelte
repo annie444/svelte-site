@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import { setContext } from 'svelte-typed-context';
+	import { setContext } from '$lib/context';
 	import { spring } from 'svelte/motion';
 	import { type Writable, writable, derived } from 'svelte/store';
 	import { writableSet, contextKey, clamp } from '$lib/utils';

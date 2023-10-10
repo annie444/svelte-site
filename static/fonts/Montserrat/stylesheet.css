@@ -1,28 +1,31 @@
 @font-face {
-    font-family: 'Montserrat';
-    src: url('fonts/Montserrat/hinted-Montserrat-ThinItalic.eot');
-    src: local('Montserrat Thin Italic'), local('Montserrat-ThinItalic'),
-        url('fonts/Montserrat/hinted-Montserrat-ThinItalic.eot?#iefix') format('embedded-opentype'),
-        url('fonts/Montserrat/hinted-Montserrat-ThinItalic.woff2') format('woff2'),
-        url('fonts/Montserrat/hinted-Montserrat-ThinItalic.woff') format('woff'),
-        url('fonts/Montserrat/hinted-Montserrat-ThinItalic.ttf') format('truetype'),
-        url('fonts/Montserrat/hinted-Montserrat-ThinItalic.svg#Montserrat-ThinItalic') format('svg');
-    font-weight: 100;
-    font-style: italic;
-    font-display: swap;
+	font-family: 'Montserrat';
+	src: url('fonts/Montserrat/hinted-Montserrat-ThinItalic.eot');
+	src:
+		local('Montserrat Thin Italic'),
+		local('Montserrat-ThinItalic'),
+		url('fonts/Montserrat/hinted-Montserrat-ThinItalic.eot?#iefix') format('embedded-opentype'),
+		url('fonts/Montserrat/hinted-Montserrat-ThinItalic.woff2') format('woff2'),
+		url('fonts/Montserrat/hinted-Montserrat-ThinItalic.woff') format('woff'),
+		url('fonts/Montserrat/hinted-Montserrat-ThinItalic.ttf') format('truetype'),
+		url('fonts/Montserrat/hinted-Montserrat-ThinItalic.svg#Montserrat-ThinItalic') format('svg');
+	font-weight: 100;
+	font-style: italic;
+	font-display: swap;
 }
 
 @font-face {
-    font-family: 'Montserrat';
-    src: url('fonts/Montserrat/hinted-Montserrat-Thin.eot');
-    src: local('Montserrat Thin'), local('Montserrat-Thin'),
-        url('fonts/Montserrat/hinted-Montserrat-Thin.eot?#iefix') format('embedded-opentype'),
-        url('fonts/Montserrat/hinted-Montserrat-Thin.woff2') format('woff2'),
-        url('fonts/Montserrat/hinted-Montserrat-Thin.woff') format('woff'),
-        url('fonts/Montserrat/hinted-Montserrat-Thin.ttf') format('truetype'),
-        url('fonts/Montserrat/hinted-Montserrat-Thin.svg#Montserrat-Thin') format('svg');
-    font-weight: 100;
-    font-style: normal;
-    font-display: swap;
+	font-family: 'Montserrat';
+	src: url('fonts/Montserrat/hinted-Montserrat-Thin.eot');
+	src:
+		local('Montserrat Thin'),
+		local('Montserrat-Thin'),
+		url('fonts/Montserrat/hinted-Montserrat-Thin.eot?#iefix') format('embedded-opentype'),
+		url('fonts/Montserrat/hinted-Montserrat-Thin.woff2') format('woff2'),
+		url('fonts/Montserrat/hinted-Montserrat-Thin.woff') format('woff'),
+		url('fonts/Montserrat/hinted-Montserrat-Thin.ttf') format('truetype'),
+		url('fonts/Montserrat/hinted-Montserrat-Thin.svg#Montserrat-Thin') format('svg');
+	font-weight: 100;
+	font-style: normal;
+	font-display: swap;
 }
-
