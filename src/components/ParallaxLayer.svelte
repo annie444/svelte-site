@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import { getContext } from 'svelte-typed-context';
+	import { getContext } from '$lib/context';
 	import { spring } from 'svelte/motion';
 	import { contextKey, clamp } from '$lib/utils';
 	import type { OnProgress, Layer, Config } from '$lib/types';

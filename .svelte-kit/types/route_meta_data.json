@@ -1,6 +1,7 @@
 {
 	"/(default)": [],
 	"/": [],
+	"/learning": [],
 	"/resume": [
 		"src/routes/resume/+page.server.ts"
 	]

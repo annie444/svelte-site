@@ -1,28 +1,31 @@
 @font-face {
-    font-family: 'Cormorant';
-    src: url('fonts/Cormorant/hinted-Cormorant-LightItalic.eot');
-    src: local('Cormorant Light Italic'), local('Cormorant-LightItalic'),
-        url('fonts/Cormorant/hinted-Cormorant-LightItalic.eot?#iefix') format('embedded-opentype'),
-        url('fonts/Cormorant/hinted-Cormorant-LightItalic.woff2') format('woff2'),
-        url('fonts/Cormorant/hinted-Cormorant-LightItalic.woff') format('woff'),
-        url('fonts/Cormorant/hinted-Cormorant-LightItalic.ttf') format('truetype'),
-        url('fonts/Cormorant/hinted-Cormorant-LightItalic.svg#Cormorant-LightItalic') format('svg');
-    font-weight: 300;
-    font-style: italic;
-    font-display: swap;
+	font-family: 'Cormorant';
+	src: url('fonts/Cormorant/hinted-Cormorant-LightItalic.eot');
+	src:
+		local('Cormorant Light Italic'),
+		local('Cormorant-LightItalic'),
+		url('fonts/Cormorant/hinted-Cormorant-LightItalic.eot?#iefix') format('embedded-opentype'),
+		url('fonts/Cormorant/hinted-Cormorant-LightItalic.woff2') format('woff2'),
+		url('fonts/Cormorant/hinted-Cormorant-LightItalic.woff') format('woff'),
+		url('fonts/Cormorant/hinted-Cormorant-LightItalic.ttf') format('truetype'),
+		url('fonts/Cormorant/hinted-Cormorant-LightItalic.svg#Cormorant-LightItalic') format('svg');
+	font-weight: 300;
+	font-style: italic;
+	font-display: swap;
 }
 
 @font-face {
-    font-family: 'Cormorant';
-    src: url('fonts/Cormorant/hinted-Cormorant-Light.eot');
-    src: local('Cormorant Light'), local('Cormorant-Light'),
-        url('fonts/Cormorant/hinted-Cormorant-Light.eot?#iefix') format('embedded-opentype'),
-        url('fonts/Cormorant/hinted-Cormorant-Light.woff2') format('woff2'),
-        url('fonts/Cormorant/hinted-Cormorant-Light.woff') format('woff'),
-        url('fonts/Cormorant/hinted-Cormorant-Light.ttf') format('truetype'),
-        url('fonts/Cormorant/hinted-Cormorant-Light.svg#Cormorant-Light') format('svg');
-    font-weight: 300;
-    font-style: normal;
-    font-display: swap;
+	font-family: 'Cormorant';
+	src: url('fonts/Cormorant/hinted-Cormorant-Light.eot');
+	src:
+		local('Cormorant Light'),
+		local('Cormorant-Light'),
+		url('fonts/Cormorant/hinted-Cormorant-Light.eot?#iefix') format('embedded-opentype'),
+		url('fonts/Cormorant/hinted-Cormorant-Light.woff2') format('woff2'),
+		url('fonts/Cormorant/hinted-Cormorant-Light.woff') format('woff'),
+		url('fonts/Cormorant/hinted-Cormorant-Light.ttf') format('truetype'),
+		url('fonts/Cormorant/hinted-Cormorant-Light.svg#Cormorant-Light') format('svg');
+	font-weight: 300;
+	font-style: normal;
+	font-display: swap;
 }
-
