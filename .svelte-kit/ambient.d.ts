@@ -28,6 +28,7 @@
 declare module '$env/static/private' {
 	export const NIX_HARDENING_ENABLE: string;
 	export const npm_package_devDependencies__tailwindcss_typography: string;
+	export const OP_PLUGIN_ALIASES_SOURCED: string;
 	export const AS: string;
 	export const HOST_PATH: string;
 	export const fish_color_param: string;
@@ -49,8 +50,8 @@ declare module '$env/static/private' {
 	export const propagatedBuildInputs: string;
 	export const TERM: string;
 	export const npm_package_devDependencies_vite: string;
-	export const depsHostHost: string;
 	export const __sandboxProfile: string;
+	export const depsHostHost: string;
 	export const SHELL: string;
 	export const NM: string;
 	export const npm_package_devDependencies__types_cookie: string;
@@ -269,6 +270,7 @@ declare module '$env/dynamic/private' {
 	export const env: {
 		NIX_HARDENING_ENABLE: string;
 		npm_package_devDependencies__tailwindcss_typography: string;
+		OP_PLUGIN_ALIASES_SOURCED: string;
 		AS: string;
 		HOST_PATH: string;
 		fish_color_param: string;
@@ -290,8 +292,8 @@ declare module '$env/dynamic/private' {
 		propagatedBuildInputs: string;
 		TERM: string;
 		npm_package_devDependencies_vite: string;
-		depsHostHost: string;
 		__sandboxProfile: string;
+		depsHostHost: string;
 		SHELL: string;
 		NM: string;
 		npm_package_devDependencies__types_cookie: string;
