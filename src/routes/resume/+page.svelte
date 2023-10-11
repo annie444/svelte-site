@@ -51,6 +51,8 @@
 			formSpan = parseFloat((438 / innerHeight).toPrecision(2));
 			cSpan = parseFloat((56 / innerHeight).toPrecision(2));
 			padding = parseFloat((16 / innerHeight).toPrecision(2));
+		}
+		if (innerWidth && innerHeight && innerWidth >= 1536) {
 			// 2xl
 			firstSpan = parseFloat(
 				(2877696 / (innerWidth * innerHeight) + 368 / innerHeight).toPrecision(2)
